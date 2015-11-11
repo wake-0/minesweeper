@@ -1,0 +1,13 @@
+W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\bin\Debug\Minesweeper.Gamelogic.dll
+W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\bin\Debug\Minesweeper.Gamelogic.pdb
+W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\bin\Debug\PostSharp.dll
+W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\bin\Debug\PostSharp.Patterns.Common.dll
+W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\bin\Debug\PostSharp.Patterns.Model.dll
+W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\bin\Debug\PostSharp.xml
+W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\bin\Debug\PostSharp.Patterns.Common.xml
+W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\bin\Debug\PostSharp.Patterns.Model.xml
+W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\bin\Debug\Minesweeper.Gamelogic.pssym
+W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\obj\Debug\Minesweeper.Gamelogic.dll
+W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\obj\Debug\Minesweeper.Gamelogic.pdb
+W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\obj\Debug\Minesweeper.Gamelogic.dll.postsharp
+W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\obj\Debug\Minesweeper.Gamelogic.csprojResolveAssemblyReference.cache

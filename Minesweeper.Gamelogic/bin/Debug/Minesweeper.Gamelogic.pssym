@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbols xmlns="http://schemas.postsharp.org/2.0/symbols">
+  <Evolution Source="#1=F:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::&lt;Row&gt;k__BackingField" Target="#2=F:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::&lt;Row&gt;k__OriginalField" />
+  <Evolution Source="#2" Target="#3=P:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::{Row}k__BackingField()" />
+  <Evolution Source="#4=F:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::&lt;Column&gt;k__BackingField" Target="#5=F:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::&lt;Column&gt;k__OriginalField" />
+  <Evolution Source="#5" Target="#6=P:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::{Column}k__BackingField()" />
+  <Evolution Source="#7=F:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::&lt;Neighbours&gt;k__BackingField" Target="#8=F:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::&lt;Neighbours&gt;k__OriginalField" />
+  <Evolution Source="#8" Target="#9=P:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::{Neighbours}k__BackingField()" />
+  <Evolution Source="#10=F:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::&lt;Type&gt;k__BackingField" Target="#11=F:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::&lt;Type&gt;k__OriginalField" />
+  <Evolution Source="#11" Target="#12=P:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::{Type}k__BackingField()" />
+  <Evolution Source="#13=F:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::&lt;State&gt;k__BackingField" Target="#14=F:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::&lt;State&gt;k__OriginalField" />
+  <Evolution Source="#14" Target="#15=P:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::{State}k__BackingField()" />
+  <Class Class="#16=T:[PostSharp.Patterns.Model]PostSharp.Patterns.Model.NotifyPropertyChangedAttribute">
+    <Instance Declaration="#17=T:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell" Id="d420cca7cb383d89">
+      <Target>
+        <JoinPoint Advising="#16" Description="#18=Introduce event PropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#16" Description="#19=Introduce method remove_PropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#16" Description="#20=Introduce method add_PropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#16" Description="#21=Introduce method OnPropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#16" Description="#22=Introduce method OnChildPropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#16" Description="#23=Introduce event ChildPropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#16" Description="#24=Introduce method remove_ChildPropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#16" Description="#25=Introduce method add_ChildPropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#16" Description="#26=Introduce interface(s) INotifyChildPropertyChanged, INotifyPropertyChanged" Ordinal="0" />
+        <JoinPoint Advised="#27=M:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::get_Row()" Advising="#16" Description="#28=Intercepted by advice OnPropertyGet" Semantic="Getter" />
+        <JoinPoint Advised="#27" Advising="#16" Description="#29=Wrapped by advice(s) OnMethodEntry, OnMethodExit" Semantic="Getter" Ordinal="2" />
+        <JoinPoint Advised="#30=M:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::set_Row(System.Int32)" Advising="#16" Description="#29" Semantic="Setter" Ordinal="2" />
+        <JoinPoint Advised="#31=M:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::get_Column()" Advising="#16" Description="#28" Semantic="Getter" />
+        <JoinPoint Advised="#31" Advising="#16" Description="#29" Semantic="Getter" Ordinal="2" />
+        <JoinPoint Advised="#32=M:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::set_Column(System.Int32)" Advising="#16" Description="#29" Semantic="Setter" Ordinal="2" />
+        <JoinPoint Advised="#33=M:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::get_Neighbours()" Advising="#16" Description="#28" Semantic="Getter" />
+        <JoinPoint Advised="#33" Advising="#16" Description="#29" Semantic="Getter" Ordinal="2" />
+        <JoinPoint Advised="#34=M:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::set_Neighbours([Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell[,])" Advising="#16" Description="#29" Semantic="Setter" Ordinal="2" />
+        <JoinPoint Advised="#35=M:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::get_Type()" Advising="#16" Description="#28" Semantic="Getter" />
+        <JoinPoint Advised="#35" Advising="#16" Description="#29" Semantic="Getter" Ordinal="2" />
+        <JoinPoint Advised="#36=M:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::set_Type([Minesweeper.Gamelogic]Minesweeper.Gamelogic.CellType)" Advising="#16" Description="#29" Semantic="Setter" Ordinal="2" />
+        <JoinPoint Advised="#37=M:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::get_State()" Advising="#16" Description="#28" Semantic="Getter" />
+        <JoinPoint Advised="#37" Advising="#16" Description="#29" Semantic="Getter" Ordinal="2" />
+        <JoinPoint Advised="#38=M:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::set_State(System.Boolean)" Advising="#16" Description="#29" Semantic="Setter" Ordinal="2" />
+        <JoinPoint Advised="#2" Advising="#16" Description="#39=Intercepted by advice OnFieldSet" Semantic="Setter" />
+        <JoinPoint Advised="#5" Advising="#16" Description="#39" Semantic="Setter" />
+        <JoinPoint Advised="#8" Advising="#16" Description="#39" Semantic="Setter" />
+        <JoinPoint Advised="#11" Advising="#16" Description="#39" Semantic="Setter" />
+        <JoinPoint Advised="#14" Advising="#16" Description="#39" Semantic="Setter" />
+      </Target>
+    </Instance>
+  </Class>
+</Symbols>
