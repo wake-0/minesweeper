@@ -3,7 +3,7 @@
   <Evolution Source="#1=F:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl::&lt;Cell&gt;k__BackingField" Target="#2=F:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl::&lt;Cell&gt;k__OriginalField" />
   <Evolution Source="#2" Target="#3=P:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl::{Cell}k__BackingField()" />
   <Class Class="#4=T:[PostSharp.Patterns.Model]PostSharp.Patterns.Model.NotifyPropertyChangedAttribute">
-    <Instance Declaration="#5=T:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl" Id="6145ba2788768cca">
+    <Instance Declaration="#5=T:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl" Id="6145ba276c74e16b">
       <Target>
         <JoinPoint Advising="#4" Description="#6=Introduce event PropertyChanged" Ordinal="0" />
         <JoinPoint Advising="#4" Description="#7=Introduce method remove_PropertyChanged" Ordinal="0" />

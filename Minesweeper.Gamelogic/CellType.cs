@@ -3,6 +3,7 @@
     public enum CellType
     {
         Free,
-        Mine
+        Mine,
+        Number
     }
 }

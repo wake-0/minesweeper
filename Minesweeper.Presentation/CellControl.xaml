@@ -10,9 +10,9 @@
     <UserControl.Content>
         <ToggleButton Background="Transparent">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Cell.Row, FallbackValue=0}"/>
+                <TextBlock Text="{Binding Row, FallbackValue=0}"/>
                 <TextBlock Text=","/>
-                <TextBlock Text="{Binding Cell.Column, FallbackValue=0}"/>
+                <TextBlock Text="{Binding Column, FallbackValue=0}"/>
             </StackPanel>
         </ToggleButton>
     </UserControl.Content>

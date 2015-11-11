@@ -17,8 +17,7 @@ namespace Minesweeper.Presentation
             InitializeComponent();
 
             Cell = cell;
+            DataContext = Cell;
         }
-
-
     }
 }
