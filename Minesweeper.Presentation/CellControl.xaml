@@ -21,18 +21,16 @@
     </UserControl.Resources>
 
     <UserControl.Content>
-            <Button x:Name="tbtnCell" 
-                Click="ToggleCell"
+            <Button Click="ToggleCell"
                 IsEnabled="{Binding Cell.IsToggled, Converter={StaticResource InverseBoolConverter}}"
                 MouseRightButtonDown="MarkCell"
                 HorizontalContentAlignment="Stretch" 
                 VerticalContentAlignment="Stretch">
 
-            <StackPanel Orientation="Horizontal" 
-                        Visibility="{Binding Cell.IsToggled, Converter={StaticResource BoolToVisibilityConverter}}" 
+            <Border Visibility="{Binding Cell.IsToggled, Converter={StaticResource BoolToVisibilityConverter}}" 
                         Background="{Binding Cell.Type, Converter={StaticResource CellTypeToBackgroundConverter}, Mode=OneTime}">
-                <TextBlock Text="{Binding Cell, Mode=OneWay, Converter={StaticResource NumberToTextConverter}}" />
-            </StackPanel>
+                <TextBlock Text="{Binding Cell, Mode=OneWay, Converter={StaticResource NumberToTextConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Border>
         </Button>
     </UserControl.Content>
 </UserControl>
