@@ -59,6 +59,7 @@ namespace Minesweeper.ViewModels
 
         private void StartGame()
         {
+            TimerService.Reset();
             CreateNewGame();
         }
 

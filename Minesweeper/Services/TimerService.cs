@@ -28,11 +28,14 @@ namespace Minesweeper.Services
 
         public void Start()
         {
-            Time = new TimeSpan();
-            watch.Reset();
-
             watch.Start();
             timer.Start();
+        }
+
+        public void Reset()
+        {
+            Time = new TimeSpan();
+            watch.Reset();
         }
 
         public void Stop()

@@ -8,7 +8,8 @@
         xmlns:viewModels="clr-namespace:Minesweeper.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow"
-        SizeToContent="WidthAndHeight">
+        SizeToContent="WidthAndHeight"
+        ResizeMode="CanMinimize">
 
     <Window.Resources>
         <shared:TimeSpanToTextConverter x:Key="TimeSpanToTextConverter" />
