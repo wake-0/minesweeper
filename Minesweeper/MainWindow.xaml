@@ -24,6 +24,6 @@
             </MenuItem>
         </Menu>
 
-        <ContentControl Grid.Row="2" Content="{Binding GameGrid}" />
+        <ContentControl Grid.Row="2" Content="{Binding GameGrid}" IsEnabled="{Binding GameIsRunning}" />
     </Grid>
 </Window>
