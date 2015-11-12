@@ -39,5 +39,19 @@ namespace Minesweeper.Gamelogic
                 { null, null, null }, 
                 { null, null, null } };
         }
+
+        public void OpenCell()
+        {
+            IsToggled = true;
+            if (Type == CellType.Number)
+            {
+                // Open empty neighbours
+                var emptyCells = Neighbours.OfType<Cell>().Where(c => c.Type == CellType.Number && c.Number == 0 && c != this && !c.IsToggled);
+                foreach(var cell in emptyCells)
+                {
+                    cell.OpenCell();
+                }
+            }
+        }
     }
 }

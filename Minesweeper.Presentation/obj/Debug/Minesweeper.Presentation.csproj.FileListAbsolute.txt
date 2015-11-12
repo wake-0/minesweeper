@@ -18,4 +18,3 @@ W:\C#Projects\Minesweeper\Minesweeper.Presentation\obj\Debug\Minesweeper.Present
 W:\C#Projects\Minesweeper\Minesweeper.Presentation\obj\Debug\Minesweeper.Presentation.dll
 W:\C#Projects\Minesweeper\Minesweeper.Presentation\obj\Debug\Minesweeper.Presentation.pdb
 W:\C#Projects\Minesweeper\Minesweeper.Presentation\obj\Debug\Minesweeper.Presentation.dll.postsharp
-W:\C#Projects\Minesweeper\Minesweeper.Presentation\obj\Debug\GeneratedInternalTypeHelper.g.cs

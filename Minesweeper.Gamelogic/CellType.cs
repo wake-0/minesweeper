@@ -2,7 +2,6 @@
 {
     public enum CellType
     {
-        Free,
         Mine,
         Number
     }

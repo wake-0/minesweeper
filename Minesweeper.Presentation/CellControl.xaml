@@ -8,53 +8,37 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
-        
-        <local:DummyConverter x:Key="dummyConverter" />
-        
-                <!--<MultiDataTrigger>
-                    <MultiDataTrigger.Conditions>
-                        <Condition Binding="{Binding Path=State, Converter={StaticResource dummyConverter}, ConverterParameter=2}" Value="True" />
-                        <Condition Binding="{Binding Path=Number, Converter={StaticResource dummyConverter}, ConverterParameter=2}" Value="3" />
-                    </MultiDataTrigger.Conditions>
-                    <Setter Property="Background" Value="Black" />
-                </MultiDataTrigger>-->
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="0" />
 
-                <!--<MultiDataTrigger>
-                    <MultiDataTrigger.Conditions>
-                        <Condition Binding="{Binding Path=State, Converter={StaticResource dummyConverter}}" Value="True" />
-                        <Condition Binding="{Binding Path=Number, Converter={StaticResource dummyConverter}}" Value="5" />
-                    </MultiDataTrigger.Conditions>
-                    <Setter Property="Background" Value="Red" />
-                </MultiDataTrigger>
-
-                <MultiDataTrigger>
-                    <MultiDataTrigger.Conditions>
-                        <Condition Binding="{Binding Path=State, Converter={StaticResource dummyConverter}}" Value="True" />
-                        <Condition Binding="{Binding Path=Number, Converter={StaticResource dummyConverter}}" Value="8" />
-                    </MultiDataTrigger.Conditions>
-                    <Setter Property="Background" Value="Violet" />
-                </MultiDataTrigger>-->
-
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Cell.IsToggled}" Value="True">
+                    <Setter Property="Background" Value="Yellow" />
+                </DataTrigger>
+            </Style.Triggers>
+            <!--<Style.Triggers>
+                <DataTrigger>
+                    
+                </DataTrigger>
+            </Style.Triggers>-->
+        </Style>
     </UserControl.Resources>
-    
-    <UserControl.Content>
-        <Button x:Name="tbtnCell" Click="ToggleCell">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Cell.Row, FallbackValue=0}"/>
-                <TextBlock Text=","/>
-                <TextBlock Text="{Binding Cell.Column, FallbackValue=0}"/>
-                <TextBlock Text=":"/>
-                <TextBlock Text="{Binding Cell.Number, FallbackValue=0}"/>
-            </StackPanel>
 
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Margin" Value="0" />
-                    <Setter Property="Padding" Value="0" />
-                    <Setter Property="Background" Value="AliceBlue" />
-                </Style>
-            </Button.Style>
-            
+    <UserControl.Content>
+            <Button x:Name="tbtnCell" 
+                Click="ToggleCell" 
+                MouseRightButtonDown="MarkCell">
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Cell.Row, FallbackValue=0}"/>
+                    <TextBlock Text=","/>
+                    <TextBlock Text="{Binding Cell.Column, FallbackValue=0}"/>
+                    <TextBlock Text=":"/>
+                    <TextBlock Text="{Binding Cell.Number, FallbackValue=0}"/>
+                    <TextBlock Text=";"/>
+                    <TextBlock Text="{Binding Cell.Type, FallbackValue=0}"/>
+            </StackPanel>
         </Button>
     </UserControl.Content>
 </UserControl>

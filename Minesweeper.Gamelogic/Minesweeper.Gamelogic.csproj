@@ -62,6 +62,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Minesweeper.Shared\Minesweeper.Shared.csproj">
+      <Project>{73f88c67-32c5-45ae-9417-d7f52466225b}</Project>
+      <Name>Minesweeper.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\PostSharp.4.1.28\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.4.1.28\tools\PostSharp.targets')" />
   <Target Name="EnsurePostSharpImported" BeforeTargets="BeforeBuild" Condition="'$(PostSharp30Imported)' == ''">

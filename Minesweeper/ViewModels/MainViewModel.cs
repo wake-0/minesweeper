@@ -2,8 +2,8 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using PostSharp.Patterns.Model;
-using System.Windows.Media;
 using Minesweeper.Utils;
+using Minesweeper.Gamelogic;
 
 namespace Minesweeper.ViewModels
 {
@@ -12,20 +12,25 @@ namespace Minesweeper.ViewModels
     {
         public ICommand StartCommand { get; set; }
         public Grid GameGrid { get; set; }
+        public GameController Controller { get; set; }
 
         public MainViewModel()
         {
-            StartCommand = new DelegateCommand(Start);
-            //GameGrid = new Grid();
-            //GameGrid.Background = Brushes.Black;
+            StartCommand = new DelegateCommand((obj) => StartGame());
 
-            GameGrid = GameGridFactory.CreateGameGrid(5);
+            Controller = new GameController();
+            CreateNewGame();
         }
 
-        private void Start(object obj)
+        private void StartGame()
         {
-            GameGrid.Background = Brushes.Blue;
+            CreateNewGame();
         }
 
+        private void CreateNewGame()
+        {
+            GameGrid = GameGridFactory.CreateGameGrid(Controller, 5);
+            Controller.SetCells(GameGrid.FindCells());
+        }
     }
 }
