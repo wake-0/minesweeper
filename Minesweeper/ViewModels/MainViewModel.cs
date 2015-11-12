@@ -13,14 +13,21 @@ namespace Minesweeper.ViewModels
     public class MainViewModel
     {
         public ICommand StartCommand { get; set; }
+        public ICommand OpenSettingsCommand { get; set; }
         public bool GameIsRunning { get; set; }
 
         public Grid GameGrid { get; set; }
         public GameController Controller { get; set; }
 
+        public GameSettings Settings { get; set; }
+
         public MainViewModel()
         {
             StartCommand = new DelegateCommand((obj) => StartGame());
+            OpenSettingsCommand = new DelegateCommand((obj) => OpenSettings());
+
+            Settings = new GameSettings();
+
             Controller = new GameController();
             Controller.GameOver += HandleGameOver;
             Controller.GameWon += HandleGameWon;
@@ -44,11 +51,23 @@ namespace Minesweeper.ViewModels
             CreateNewGame();
         }
 
+        private void OpenSettings()
+        {
+            var settingsWindow = new SettingsWindow(Settings);
+            settingsWindow.ApplyClicked += HandleApply;
+            settingsWindow.ShowDialog();
+        }
+
+        private void HandleApply(object sender, EventArgs e)
+        {
+            CreateNewGame();
+        }
+
         private void CreateNewGame()
         {
             GameIsRunning = true;
-            GameGrid = GameGridFactory.CreateGameGrid(Controller, 5);
-            Controller.SetCells(GameGrid.FindCells());
+            GameGrid = GameGridFactory.CreateGameGrid(Controller, Settings.Size);
+            Controller.SetCells(GameGrid.FindCells(), Settings.NumberOfMines);
         }
     }
 }

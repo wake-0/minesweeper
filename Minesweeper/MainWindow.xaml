@@ -21,6 +21,7 @@
         <Menu IsMainMenu="True">
             <MenuItem Header="Datei">
                 <MenuItem Header="Start" Command="{Binding StartCommand}"  />
+                <MenuItem Header="Settings" Command="{Binding OpenSettingsCommand}"  />
             </MenuItem>
         </Menu>
 

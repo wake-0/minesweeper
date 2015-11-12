@@ -27,3 +27,5 @@ W:\C#Projects\Minesweeper\Minesweeper\bin\Debug\PostSharp.Patterns.Common.xml
 W:\C#Projects\Minesweeper\Minesweeper\bin\Debug\PostSharp.Patterns.Model.xml
 W:\C#Projects\Minesweeper\Minesweeper\bin\Debug\Minesweeper.pssym
 W:\C#Projects\Minesweeper\Minesweeper\obj\Debug\Minesweeper.exe.postsharp
+W:\C#Projects\Minesweeper\Minesweeper\obj\Debug\SettingsWindow.g.cs
+W:\C#Projects\Minesweeper\Minesweeper\obj\Debug\SettingsWindow.baml

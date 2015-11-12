@@ -19,8 +19,8 @@ namespace Minesweeper.Utils
             // Create rows and columns
             for (int i = 0; i < size; i++)
             {
-                var column = new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) };
-                var row = new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) };
+                var column = new ColumnDefinition() { Width = new GridLength(20, GridUnitType.Pixel) };
+                var row = new RowDefinition() { Height = new GridLength(20, GridUnitType.Pixel) };
 
                 grid.ColumnDefinitions.Add(column);
                 grid.RowDefinitions.Add(row);

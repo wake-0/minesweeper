@@ -2,45 +2,85 @@
 <Symbols xmlns="http://schemas.postsharp.org/2.0/symbols">
   <Evolution Source="#1=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;StartCommand&gt;k__BackingField" Target="#2=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;StartCommand&gt;k__OriginalField" />
   <Evolution Source="#2" Target="#3=P:[Minesweeper]Minesweeper.ViewModels.MainViewModel::{StartCommand}k__BackingField()" />
-  <Evolution Source="#4=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;GameIsRunning&gt;k__BackingField" Target="#5=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;GameIsRunning&gt;k__OriginalField" />
-  <Evolution Source="#5" Target="#6=P:[Minesweeper]Minesweeper.ViewModels.MainViewModel::{GameIsRunning}k__BackingField()" />
-  <Evolution Source="#7=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;GameGrid&gt;k__BackingField" Target="#8=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;GameGrid&gt;k__OriginalField" />
-  <Evolution Source="#8" Target="#9=P:[Minesweeper]Minesweeper.ViewModels.MainViewModel::{GameGrid}k__BackingField()" />
-  <Evolution Source="#10=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;Controller&gt;k__BackingField" Target="#11=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;Controller&gt;k__OriginalField" />
-  <Evolution Source="#11" Target="#12=P:[Minesweeper]Minesweeper.ViewModels.MainViewModel::{Controller}k__BackingField()" />
-  <Class Class="#13=T:[PostSharp.Patterns.Model]PostSharp.Patterns.Model.NotifyPropertyChangedAttribute">
-    <Instance Declaration="#14=T:[Minesweeper]Minesweeper.ViewModels.MainViewModel" Id="da54e2a1b74d71b3">
+  <Evolution Source="#4=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;OpenSettingsCommand&gt;k__BackingField" Target="#5=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;OpenSettingsCommand&gt;k__OriginalField" />
+  <Evolution Source="#5" Target="#6=P:[Minesweeper]Minesweeper.ViewModels.MainViewModel::{OpenSettingsCommand}k__BackingField()" />
+  <Evolution Source="#7=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;GameIsRunning&gt;k__BackingField" Target="#8=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;GameIsRunning&gt;k__OriginalField" />
+  <Evolution Source="#8" Target="#9=P:[Minesweeper]Minesweeper.ViewModels.MainViewModel::{GameIsRunning}k__BackingField()" />
+  <Evolution Source="#10=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;GameGrid&gt;k__BackingField" Target="#11=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;GameGrid&gt;k__OriginalField" />
+  <Evolution Source="#11" Target="#12=P:[Minesweeper]Minesweeper.ViewModels.MainViewModel::{GameGrid}k__BackingField()" />
+  <Evolution Source="#13=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;Controller&gt;k__BackingField" Target="#14=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;Controller&gt;k__OriginalField" />
+  <Evolution Source="#14" Target="#15=P:[Minesweeper]Minesweeper.ViewModels.MainViewModel::{Controller}k__BackingField()" />
+  <Evolution Source="#16=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;Settings&gt;k__BackingField" Target="#17=F:[Minesweeper]Minesweeper.ViewModels.MainViewModel::&lt;Settings&gt;k__OriginalField" />
+  <Evolution Source="#17" Target="#18=P:[Minesweeper]Minesweeper.ViewModels.MainViewModel::{Settings}k__BackingField()" />
+  <Evolution Source="#19=F:[Minesweeper]Minesweeper.Utils.GameSettings::&lt;NumberOfMines&gt;k__BackingField" Target="#20=F:[Minesweeper]Minesweeper.Utils.GameSettings::&lt;NumberOfMines&gt;k__OriginalField" />
+  <Evolution Source="#20" Target="#21=P:[Minesweeper]Minesweeper.Utils.GameSettings::{NumberOfMines}k__BackingField()" />
+  <Evolution Source="#22=F:[Minesweeper]Minesweeper.Utils.GameSettings::&lt;Size&gt;k__BackingField" Target="#23=F:[Minesweeper]Minesweeper.Utils.GameSettings::&lt;Size&gt;k__OriginalField" />
+  <Evolution Source="#23" Target="#24=P:[Minesweeper]Minesweeper.Utils.GameSettings::{Size}k__BackingField()" />
+  <Class Class="#25=T:[PostSharp.Patterns.Model]PostSharp.Patterns.Model.NotifyPropertyChangedAttribute">
+    <Instance Declaration="#26=T:[Minesweeper]Minesweeper.ViewModels.MainViewModel" Id="da54e2a1f610305a">
       <Target>
-        <JoinPoint Advising="#13" Description="#15=Introduce method OnChildPropertyChanged" Ordinal="0" />
-        <JoinPoint Advising="#13" Description="#16=Introduce event ChildPropertyChanged" Ordinal="0" />
-        <JoinPoint Advising="#13" Description="#17=Introduce method remove_ChildPropertyChanged" Ordinal="0" />
-        <JoinPoint Advising="#13" Description="#18=Introduce method add_ChildPropertyChanged" Ordinal="0" />
-        <JoinPoint Advising="#13" Description="#19=Introduce event PropertyChanged" Ordinal="0" />
-        <JoinPoint Advising="#13" Description="#20=Introduce method remove_PropertyChanged" Ordinal="0" />
-        <JoinPoint Advising="#13" Description="#21=Introduce method add_PropertyChanged" Ordinal="0" />
-        <JoinPoint Advising="#13" Description="#22=Introduce method OnPropertyChanged" Ordinal="0" />
-        <JoinPoint Advising="#13" Description="#23=Introduce interface(s) INotifyChildPropertyChanged, INotifyPropertyChanged" Ordinal="0" />
-        <JoinPoint Advised="#24=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::get_StartCommand()" Advising="#13" Description="#25=Intercepted by advice OnPropertyGet" Semantic="Getter" />
-        <JoinPoint Advised="#24" Advising="#13" Description="#26=Wrapped by advice(s) OnMethodEntry, OnMethodExit" Semantic="Getter" Ordinal="2" />
-        <JoinPoint Advised="#27=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::set_StartCommand(System.Windows.Input.ICommand)" Advising="#13" Description="#26" Semantic="Setter" Ordinal="2" />
-        <JoinPoint Advised="#28=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::get_GameIsRunning()" Advising="#13" Description="#25" Semantic="Getter" />
-        <JoinPoint Advised="#28" Advising="#13" Description="#26" Semantic="Getter" Ordinal="2" />
-        <JoinPoint Advised="#29=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::set_GameIsRunning(System.Boolean)" Advising="#13" Description="#26" Semantic="Setter" Ordinal="2" />
-        <JoinPoint Advised="#30=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::get_GameGrid()" Advising="#13" Description="#25" Semantic="Getter" />
-        <JoinPoint Advised="#30" Advising="#13" Description="#26" Semantic="Getter" Ordinal="2" />
-        <JoinPoint Advised="#31=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::set_GameGrid(System.Windows.Controls.Grid)" Advising="#13" Description="#26" Semantic="Setter" Ordinal="2" />
-        <JoinPoint Advised="#32=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::get_Controller()" Advising="#13" Description="#25" Semantic="Getter" />
-        <JoinPoint Advised="#32" Advising="#13" Description="#26" Semantic="Getter" Ordinal="2" />
-        <JoinPoint Advised="#33=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::set_Controller(Minesweeper.Gamelogic.GameController)" Advising="#13" Description="#26" Semantic="Setter" Ordinal="2" />
-        <JoinPoint Advised="#34=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::HandleGameWon(System.Object, System.EventArgs)" Advising="#13" Description="#26" />
-        <JoinPoint Advised="#35=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::HandleGameOver(System.Object, System.EventArgs)" Advising="#13" Description="#26" />
-        <JoinPoint Advised="#36=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::StartGame()" Advising="#13" Description="#26" />
-        <JoinPoint Advised="#37=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::CreateNewGame()" Advising="#13" Description="#26" />
-        <JoinPoint Advised="#38=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::{#ctor}b__16_0(System.Object)" Advising="#13" Description="#26" />
-        <JoinPoint Advised="#2" Advising="#13" Description="#39=Intercepted by advice OnFieldSet" Semantic="Setter" />
-        <JoinPoint Advised="#5" Advising="#13" Description="#39" Semantic="Setter" />
-        <JoinPoint Advised="#8" Advising="#13" Description="#39" Semantic="Setter" />
-        <JoinPoint Advised="#11" Advising="#13" Description="#39" Semantic="Setter" />
+        <JoinPoint Advising="#25" Description="#27=Introduce event PropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#28=Introduce method remove_PropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#29=Introduce method add_PropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#30=Introduce method OnPropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#31=Introduce event ChildPropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#32=Introduce method remove_ChildPropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#33=Introduce method add_ChildPropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#34=Introduce method OnChildPropertyChanged" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#35=Introduce interface(s) INotifyChildPropertyChanged, INotifyPropertyChanged" Ordinal="0" />
+        <JoinPoint Advised="#36=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::get_StartCommand()" Advising="#25" Description="#37=Intercepted by advice OnPropertyGet" Semantic="Getter" />
+        <JoinPoint Advised="#36" Advising="#25" Description="#38=Wrapped by advice(s) OnMethodEntry, OnMethodExit" Semantic="Getter" Ordinal="2" />
+        <JoinPoint Advised="#39=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::set_StartCommand(System.Windows.Input.ICommand)" Advising="#25" Description="#38" Semantic="Setter" Ordinal="2" />
+        <JoinPoint Advised="#40=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::get_OpenSettingsCommand()" Advising="#25" Description="#37" Semantic="Getter" />
+        <JoinPoint Advised="#40" Advising="#25" Description="#38" Semantic="Getter" Ordinal="2" />
+        <JoinPoint Advised="#41=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::set_OpenSettingsCommand(System.Windows.Input.ICommand)" Advising="#25" Description="#38" Semantic="Setter" Ordinal="2" />
+        <JoinPoint Advised="#42=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::get_GameIsRunning()" Advising="#25" Description="#37" Semantic="Getter" />
+        <JoinPoint Advised="#42" Advising="#25" Description="#38" Semantic="Getter" Ordinal="2" />
+        <JoinPoint Advised="#43=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::set_GameIsRunning(System.Boolean)" Advising="#25" Description="#38" Semantic="Setter" Ordinal="2" />
+        <JoinPoint Advised="#44=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::get_GameGrid()" Advising="#25" Description="#37" Semantic="Getter" />
+        <JoinPoint Advised="#44" Advising="#25" Description="#38" Semantic="Getter" Ordinal="2" />
+        <JoinPoint Advised="#45=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::set_GameGrid(System.Windows.Controls.Grid)" Advising="#25" Description="#38" Semantic="Setter" Ordinal="2" />
+        <JoinPoint Advised="#46=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::get_Controller()" Advising="#25" Description="#37" Semantic="Getter" />
+        <JoinPoint Advised="#46" Advising="#25" Description="#38" Semantic="Getter" Ordinal="2" />
+        <JoinPoint Advised="#47=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::set_Controller(Minesweeper.Gamelogic.GameController)" Advising="#25" Description="#38" Semantic="Setter" Ordinal="2" />
+        <JoinPoint Advised="#48=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::get_Settings()" Advising="#25" Description="#37" Semantic="Getter" />
+        <JoinPoint Advised="#48" Advising="#25" Description="#38" Semantic="Getter" Ordinal="2" />
+        <JoinPoint Advised="#49=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::set_Settings([Minesweeper]Minesweeper.Utils.GameSettings)" Advising="#25" Description="#38" Semantic="Setter" Ordinal="2" />
+        <JoinPoint Advised="#50=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::HandleGameWon(System.Object, System.EventArgs)" Advising="#25" Description="#38" />
+        <JoinPoint Advised="#51=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::HandleGameOver(System.Object, System.EventArgs)" Advising="#25" Description="#38" />
+        <JoinPoint Advised="#52=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::StartGame()" Advising="#25" Description="#38" />
+        <JoinPoint Advised="#53=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::OpenSettings()" Advising="#25" Description="#38" />
+        <JoinPoint Advised="#54=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::HandleApply(System.Object, System.EventArgs)" Advising="#25" Description="#38" />
+        <JoinPoint Advised="#55=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::CreateNewGame()" Advising="#25" Description="#38" />
+        <JoinPoint Advised="#56=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::{#ctor}b__24_0(System.Object)" Advising="#25" Description="#38" />
+        <JoinPoint Advised="#57=M:[Minesweeper]Minesweeper.ViewModels.MainViewModel::{#ctor}b__24_1(System.Object)" Advising="#25" Description="#38" />
+        <JoinPoint Advised="#2" Advising="#25" Description="#58=Intercepted by advice OnFieldSet" Semantic="Setter" />
+        <JoinPoint Advised="#5" Advising="#25" Description="#58" Semantic="Setter" />
+        <JoinPoint Advised="#8" Advising="#25" Description="#58" Semantic="Setter" />
+        <JoinPoint Advised="#11" Advising="#25" Description="#58" Semantic="Setter" />
+        <JoinPoint Advised="#14" Advising="#25" Description="#58" Semantic="Setter" />
+        <JoinPoint Advised="#17" Advising="#25" Description="#58" Semantic="Setter" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#59=T:[Minesweeper]Minesweeper.Utils.GameSettings" Id="da54e2a13bf0d4bb">
+      <Target>
+        <JoinPoint Advising="#25" Description="#27" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#28" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#29" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#34" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#31" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#32" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#33" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#30" Ordinal="0" />
+        <JoinPoint Advising="#25" Description="#35" Ordinal="0" />
+        <JoinPoint Advised="#60=M:[Minesweeper]Minesweeper.Utils.GameSettings::get_NumberOfMines()" Advising="#25" Description="#37" Semantic="Getter" />
+        <JoinPoint Advised="#60" Advising="#25" Description="#38" Semantic="Getter" Ordinal="2" />
+        <JoinPoint Advised="#61=M:[Minesweeper]Minesweeper.Utils.GameSettings::set_NumberOfMines(System.Int32)" Advising="#25" Description="#38" Semantic="Setter" Ordinal="2" />
+        <JoinPoint Advised="#62=M:[Minesweeper]Minesweeper.Utils.GameSettings::get_Size()" Advising="#25" Description="#37" Semantic="Getter" />
+        <JoinPoint Advised="#62" Advising="#25" Description="#38" Semantic="Getter" Ordinal="2" />
+        <JoinPoint Advised="#63=M:[Minesweeper]Minesweeper.Utils.GameSettings::set_Size(System.Int32)" Advising="#25" Description="#38" Semantic="Setter" Ordinal="2" />
+        <JoinPoint Advised="#20" Advising="#25" Description="#58" Semantic="Setter" />
+        <JoinPoint Advised="#23" Advising="#25" Description="#58" Semantic="Setter" />
       </Target>
     </Instance>
   </Class>

@@ -9,7 +9,7 @@ namespace Minesweeper.Gamelogic
     public class GameController
     {
         private IEnumerable<Cell> cells;
-        private readonly int numberOfMines;
+        private int numberOfMines;
 
         public event EventHandler GameOver;
         public event EventHandler GameWon;
@@ -20,9 +20,10 @@ namespace Minesweeper.Gamelogic
             numberOfMines = 2;
         }
 
-        public void SetCells(IEnumerable<Cell> cells)
+        public void SetCells(IEnumerable<Cell> cells, int numberOfMines)
         {
             this.cells = cells;
+            this.numberOfMines = numberOfMines;
             SetMines();
         }
 
