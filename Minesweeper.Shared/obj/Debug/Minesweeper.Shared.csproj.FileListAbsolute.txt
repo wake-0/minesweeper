@@ -1,5 +1,0 @@
-W:\C#Projects\Minesweeper\Minesweeper.Shared\bin\Debug\Minesweeper.Shared.dll
-W:\C#Projects\Minesweeper\Minesweeper.Shared\bin\Debug\Minesweeper.Shared.pdb
-W:\C#Projects\Minesweeper\Minesweeper.Shared\obj\Debug\Minesweeper.Shared.dll
-W:\C#Projects\Minesweeper\Minesweeper.Shared\obj\Debug\Minesweeper.Shared.pdb
-W:\C#Projects\Minesweeper\Minesweeper.Shared\obj\Debug\Minesweeper.Shared.csprojResolveAssemblyReference.cache
