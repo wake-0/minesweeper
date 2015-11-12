@@ -7,7 +7,8 @@
         xmlns:local="clr-namespace:Minesweeper"
         xmlns:viewModels="clr-namespace:Minesweeper.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow"
+        SizeToContent="WidthAndHeight">
 
     <Window.Resources>
         <shared:TimeSpanToTextConverter x:Key="TimeSpanToTextConverter" />
@@ -31,7 +32,10 @@
             </MenuItem>
         </Menu>
 
-        <Label Grid.Row="1" Content="{Binding TimerService.Time, Converter={StaticResource TimeSpanToTextConverter}}" />
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Label Content="Time:" />
+            <Label Content="{Binding TimerService.Time, Converter={StaticResource TimeSpanToTextConverter}}" />
+        </StackPanel>
         
         <ContentControl Grid.Row="2" Content="{Binding GameGrid}" IsEnabled="{Binding GameIsRunning}" />
     </Grid>

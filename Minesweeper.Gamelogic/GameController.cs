@@ -40,6 +40,7 @@ namespace Minesweeper.Gamelogic
 
             if (cell.Type == CellType.Mine)
             {
+                ToggleAllCells();
                 OnGameOver();
             }
             else
@@ -54,6 +55,7 @@ namespace Minesweeper.Gamelogic
         {
             if (!cells.OfType<Cell>().Any(c => c.Type == CellType.Number && !c.IsToggled))
             {
+                ToggleAllCells();
                 OnGameWon();
             }
         }
@@ -101,6 +103,11 @@ namespace Minesweeper.Gamelogic
                 // Set as mine 
                 randomCell.Type = CellType.Mine;
             }
+        }
+
+        private void ToggleAllCells()
+        {
+            cells.ToList().ForEach(c => c.IsToggled = true);
         }
 
         public void Reset()

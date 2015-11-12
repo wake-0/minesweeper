@@ -10,8 +10,8 @@ namespace Minesweeper.Utils
 
         public GameSettings()
         {
-            NumberOfMines = 5;
-            Size = 5;
+            NumberOfMines = 7;
+            Size = 10;
         }
     }
 }
