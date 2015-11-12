@@ -2,13 +2,18 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace Minesweeper.Presentation
+namespace Minesweeper.Shared.Converters
 {
-    public class DummyConverter : IValueConverter
+    public class InverseBoolConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value;
+            if (value is bool)
+            {
+                return !(bool)value;
+            }
+
+            return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

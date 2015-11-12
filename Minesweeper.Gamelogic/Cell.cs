@@ -62,7 +62,7 @@ namespace Minesweeper.Gamelogic
         private void OpenNeighbours()
         {
             var allNeighbours = Neighbours.OfType<Cell>().ToList();
-            allNeighbours.ForEach(neighbour => neighbour.IsToggled = true);
+            allNeighbours.ForEach(neighbour => neighbour.OpenCell());
         }
     }
 }

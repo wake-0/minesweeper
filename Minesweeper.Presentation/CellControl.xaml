@@ -4,34 +4,34 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Minesweeper.Presentation"
+             xmlns:shared="clr-namespace:Minesweeper.Shared.Converters;assembly=Minesweeper.Shared"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
+        <shared:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <shared:InverseBoolConverter x:Key="InverseBoolConverter" />
+        <local:NumberToTextConverter x:Key="NumberToTextConverter" />
+        <local:CellTypeToBackground x:Key="CellTypeToBackgroundConverter" />
+        
         <Style TargetType="Button">
             <Setter Property="Margin" Value="0" />
             <Setter Property="Padding" Value="0" />
-
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding Cell.IsToggled}" Value="True">
-                    <Setter Property="Background" Value="Yellow" />
-                </DataTrigger>
-            </Style.Triggers>
-            <!--<Style.Triggers>
-                <DataTrigger>
-                    
-                </DataTrigger>
-            </Style.Triggers>-->
         </Style>
     </UserControl.Resources>
 
     <UserControl.Content>
             <Button x:Name="tbtnCell" 
-                Click="ToggleCell" 
-                MouseRightButtonDown="MarkCell">
+                Click="ToggleCell"
+                IsEnabled="{Binding Cell.IsToggled, Converter={StaticResource InverseBoolConverter}}"
+                MouseRightButtonDown="MarkCell"
+                HorizontalContentAlignment="Stretch" 
+                VerticalContentAlignment="Stretch">
 
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Cell.Number, FallbackValue=0}"/>
+            <StackPanel Orientation="Horizontal" 
+                        Visibility="{Binding Cell.IsToggled, Converter={StaticResource BoolToVisibilityConverter}}" 
+                        Background="{Binding Cell.Type, Converter={StaticResource CellTypeToBackgroundConverter}, Mode=OneTime}">
+                <TextBlock Text="{Binding Cell, Mode=OneWay, Converter={StaticResource NumberToTextConverter}}" />
             </StackPanel>
         </Button>
     </UserControl.Content>

@@ -61,7 +61,9 @@
     <Compile Include="CellControl.xaml.cs">
       <DependentUpon>CellControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CellTypeToBackground.cs" />
     <Compile Include="DummyConverter.cs" />
+    <Compile Include="NumberToTextConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +76,10 @@
     <ProjectReference Include="..\Minesweeper.Gamelogic\Minesweeper.Gamelogic.csproj">
       <Project>{728292e5-d4bc-4de3-930b-10af324cf95c}</Project>
       <Name>Minesweeper.Gamelogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Minesweeper.Shared\Minesweeper.Shared.csproj">
+      <Project>{73f88c67-32c5-45ae-9417-d7f52466225b}</Project>
+      <Name>Minesweeper.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
