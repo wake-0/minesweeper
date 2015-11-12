@@ -3,10 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:shared="clr-namespace:Minesweeper.Shared.Converters;assembly=Minesweeper.Shared"
         xmlns:local="clr-namespace:Minesweeper"
         xmlns:viewModels="clr-namespace:Minesweeper.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+
+    <Window.Resources>
+        <shared:TimeSpanToTextConverter x:Key="TimeSpanToTextConverter" />
+    </Window.Resources>
     
     <Window.DataContext>
         <viewModels:MainViewModel />        
@@ -15,16 +20,19 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
         <Menu IsMainMenu="True">
             <MenuItem Header="Datei">
-                <MenuItem Header="Start" Command="{Binding StartCommand}"  />
+                <MenuItem Header="New Game" Command="{Binding StartCommand}"  />
                 <MenuItem Header="Settings" Command="{Binding OpenSettingsCommand}"  />
             </MenuItem>
         </Menu>
 
+        <Label Grid.Row="1" Content="{Binding TimerService.Time, Converter={StaticResource TimeSpanToTextConverter}}" />
+        
         <ContentControl Grid.Row="2" Content="{Binding GameGrid}" IsEnabled="{Binding GameIsRunning}" />
     </Grid>
 </Window>

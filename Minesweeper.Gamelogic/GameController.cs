@@ -1,8 +1,6 @@
-﻿using Minesweeper.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Input;
 
 namespace Minesweeper.Gamelogic
 {
@@ -10,14 +8,17 @@ namespace Minesweeper.Gamelogic
     {
         private IEnumerable<Cell> cells;
         private int numberOfMines;
+        private int steps;
 
         public event EventHandler GameOver;
         public event EventHandler GameWon;
+        public event EventHandler FirstStep;
 
         public GameController()
         {
             // Check number of mines < cells.count
             numberOfMines = 2;
+            steps = 0;
         }
 
         public void SetCells(IEnumerable<Cell> cells, int numberOfMines)
@@ -29,6 +30,11 @@ namespace Minesweeper.Gamelogic
 
         public void OpenCell(Cell cell)
         {
+            if (steps == 0)
+            {
+                OnFirstStep();
+            }
+
             // Open cells and all depending cells
             cell.OpenCell();
 
@@ -40,6 +46,8 @@ namespace Minesweeper.Gamelogic
             {
                 CheckGameWon();
             }
+
+            steps++;
         }
 
         private void CheckGameWon()
@@ -66,6 +74,14 @@ namespace Minesweeper.Gamelogic
             }
         }
 
+        private void OnFirstStep()
+        {
+            if (FirstStep != null)
+            {
+                FirstStep.Invoke(this, new EventArgs());
+            }
+        }
+
         private void SetMines()
         {
             Random random = new Random();
@@ -85,6 +101,11 @@ namespace Minesweeper.Gamelogic
                 // Set as mine 
                 randomCell.Type = CellType.Mine;
             }
+        }
+
+        public void Reset()
+        {
+            steps = 0;
         }
     }
 }

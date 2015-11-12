@@ -6,6 +6,7 @@ using Minesweeper.Utils;
 using Minesweeper.Gamelogic;
 using System;
 using System.Windows;
+using Minesweeper.Services;
 
 namespace Minesweeper.ViewModels
 {
@@ -20,6 +21,7 @@ namespace Minesweeper.ViewModels
         public GameController Controller { get; set; }
 
         public GameSettings Settings { get; set; }
+        public TimerService TimerService { get; set; }
 
         public MainViewModel()
         {
@@ -27,22 +29,31 @@ namespace Minesweeper.ViewModels
             OpenSettingsCommand = new DelegateCommand((obj) => OpenSettings());
 
             Settings = new GameSettings();
+            TimerService = new TimerService();
 
             Controller = new GameController();
+            Controller.FirstStep += HandleFirstStep;
             Controller.GameOver += HandleGameOver;
             Controller.GameWon += HandleGameWon;
             CreateNewGame();
         }
 
+        private void HandleFirstStep(object sender, EventArgs e)
+        {
+            TimerService.Start();
+        }
+
         private void HandleGameWon(object sender, EventArgs e)
         {
             GameIsRunning = false;
+            TimerService.Stop();
             MessageBox.Show("Game won");
         }
 
         private void HandleGameOver(object sender, EventArgs e)
         {
             GameIsRunning = false;
+            TimerService.Stop();
             MessageBox.Show("Game over");
         }
 
@@ -67,6 +78,7 @@ namespace Minesweeper.ViewModels
         {
             GameIsRunning = true;
             GameGrid = GameGridFactory.CreateGameGrid(Controller, Settings.Size);
+            Controller.Reset();
             Controller.SetCells(GameGrid.FindCells(), Settings.NumberOfMines);
         }
     }
