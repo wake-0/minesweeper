@@ -13,7 +13,7 @@
   <Evolution Source="#16=F:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::&lt;IsMarked&gt;k__BackingField" Target="#17=F:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::&lt;IsMarked&gt;k__OriginalField" />
   <Evolution Source="#17" Target="#18=P:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell::{IsMarked}k__BackingField()" />
   <Class Class="#19=T:[PostSharp.Patterns.Model]PostSharp.Patterns.Model.NotifyPropertyChangedAttribute">
-    <Instance Declaration="#20=T:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell" Id="d420cca74c12a39f">
+    <Instance Declaration="#20=T:[Minesweeper.Gamelogic]Minesweeper.Gamelogic.Cell" Id="d420cca7847ffbf0">
       <Target>
         <JoinPoint Advising="#19" Description="#21=Introduce event PropertyChanged" Ordinal="0" />
         <JoinPoint Advising="#19" Description="#22=Introduce method remove_PropertyChanged" Ordinal="0" />

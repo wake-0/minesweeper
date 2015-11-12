@@ -12,12 +12,12 @@ namespace Minesweeper.Gamelogic
         private readonly int numberOfMines;
 
         public event EventHandler GameOver;
+        public event EventHandler GameWon;
 
         public GameController()
         {
             // Check number of mines < cells.count
             numberOfMines = 2;
-
         }
 
         public void SetCells(IEnumerable<Cell> cells)
@@ -35,6 +35,18 @@ namespace Minesweeper.Gamelogic
             {
                 OnGameOver();
             }
+            else
+            {
+                CheckGameWon();
+            }
+        }
+
+        private void CheckGameWon()
+        {
+            if (!cells.OfType<Cell>().Any(c => c.Type == CellType.Number && !c.IsToggled))
+            {
+                OnGameWon();
+            }
         }
 
         private void OnGameOver()
@@ -42,6 +54,14 @@ namespace Minesweeper.Gamelogic
             if (GameOver != null)
             {
                 GameOver.Invoke(this, new EventArgs());
+            }
+        }
+
+        private void OnGameWon()
+        {
+            if (GameWon != null)
+            {
+                GameWon.Invoke(this, new EventArgs());
             }
         }
 

@@ -23,7 +23,14 @@ namespace Minesweeper.ViewModels
             StartCommand = new DelegateCommand((obj) => StartGame());
             Controller = new GameController();
             Controller.GameOver += HandleGameOver;
+            Controller.GameWon += HandleGameWon;
             CreateNewGame();
+        }
+
+        private void HandleGameWon(object sender, EventArgs e)
+        {
+            GameIsRunning = false;
+            MessageBox.Show("Game won");
         }
 
         private void HandleGameOver(object sender, EventArgs e)
