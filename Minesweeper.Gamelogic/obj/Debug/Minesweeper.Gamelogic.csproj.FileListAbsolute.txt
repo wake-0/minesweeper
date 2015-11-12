@@ -10,4 +10,3 @@ W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\bin\Debug\Minesweeper.Gamelogic.
 W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\obj\Debug\Minesweeper.Gamelogic.dll
 W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\obj\Debug\Minesweeper.Gamelogic.pdb
 W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\obj\Debug\Minesweeper.Gamelogic.dll.postsharp
-W:\C#Projects\Minesweeper\Minesweeper.Gamelogic\obj\Debug\Minesweeper.Gamelogic.csprojResolveAssemblyReference.cache

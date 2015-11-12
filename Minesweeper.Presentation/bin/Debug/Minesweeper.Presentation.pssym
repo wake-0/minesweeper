@@ -3,7 +3,7 @@
   <Evolution Source="#1=F:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl::&lt;Cell&gt;k__BackingField" Target="#2=F:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl::&lt;Cell&gt;k__OriginalField" />
   <Evolution Source="#2" Target="#3=P:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl::{Cell}k__BackingField()" />
   <Class Class="#4=T:[PostSharp.Patterns.Model]PostSharp.Patterns.Model.NotifyPropertyChangedAttribute">
-    <Instance Declaration="#5=T:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl" Id="6145ba276c74e16b">
+    <Instance Declaration="#5=T:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl" Id="6145ba27396e35b9">
       <Target>
         <JoinPoint Advising="#4" Description="#6=Introduce event PropertyChanged" Ordinal="0" />
         <JoinPoint Advising="#4" Description="#7=Introduce method remove_PropertyChanged" Ordinal="0" />
@@ -17,9 +17,10 @@
         <JoinPoint Advised="#15=M:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl::get_Cell()" Advising="#4" Description="#16=Intercepted by advice OnPropertyGet" Semantic="Getter" />
         <JoinPoint Advised="#15" Advising="#4" Description="#17=Wrapped by advice(s) OnMethodEntry, OnMethodExit" Semantic="Getter" Ordinal="2" />
         <JoinPoint Advised="#18=M:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl::set_Cell(Minesweeper.Gamelogic.Cell)" Advising="#4" Description="#17" Semantic="Setter" Ordinal="2" />
-        <JoinPoint Advised="#19=M:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl::InitializeComponent()" Advising="#4" Description="#17" />
-        <JoinPoint Advised="#20=M:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl::System#Windows#Markup#IComponentConnector#Connect(System.Int32, System.Object)" Advising="#4" Description="#17" />
-        <JoinPoint Advised="#2" Advising="#4" Description="#21=Intercepted by advice OnFieldSet" Semantic="Setter" />
+        <JoinPoint Advised="#19=M:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl::ToggleCell(System.Object, System.Windows.RoutedEventArgs)" Advising="#4" Description="#17" />
+        <JoinPoint Advised="#20=M:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl::InitializeComponent()" Advising="#4" Description="#17" />
+        <JoinPoint Advised="#21=M:[Minesweeper.Presentation]Minesweeper.Presentation.CellControl::System#Windows#Markup#IComponentConnector#Connect(System.Int32, System.Object)" Advising="#4" Description="#17" />
+        <JoinPoint Advised="#2" Advising="#4" Description="#22=Intercepted by advice OnFieldSet" Semantic="Setter" />
       </Target>
     </Instance>
   </Class>

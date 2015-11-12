@@ -33,7 +33,7 @@ namespace Minesweeper.Utils
             {
                 for (int column = 0; column < size; column++)
                 {
-                    CellControl cell = new CellControl(new Cell(row, column));
+                    CellControl cell = new CellControl(new Cell(row, column) { Type = CellType.Mine });
 
                     Grid.SetRow(cell, row);
                     Grid.SetColumn(cell, column);

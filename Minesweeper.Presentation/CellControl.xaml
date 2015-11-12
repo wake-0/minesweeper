@@ -7,13 +7,54 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
+    <UserControl.Resources>
+        
+        <local:DummyConverter x:Key="dummyConverter" />
+        
+                <!--<MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=State, Converter={StaticResource dummyConverter}, ConverterParameter=2}" Value="True" />
+                        <Condition Binding="{Binding Path=Number, Converter={StaticResource dummyConverter}, ConverterParameter=2}" Value="3" />
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="Background" Value="Black" />
+                </MultiDataTrigger>-->
+
+                <!--<MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=State, Converter={StaticResource dummyConverter}}" Value="True" />
+                        <Condition Binding="{Binding Path=Number, Converter={StaticResource dummyConverter}}" Value="5" />
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="Background" Value="Red" />
+                </MultiDataTrigger>
+
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=State, Converter={StaticResource dummyConverter}}" Value="True" />
+                        <Condition Binding="{Binding Path=Number, Converter={StaticResource dummyConverter}}" Value="8" />
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="Background" Value="Violet" />
+                </MultiDataTrigger>-->
+
+    </UserControl.Resources>
+    
     <UserControl.Content>
-        <ToggleButton Background="Transparent">
+        <Button x:Name="tbtnCell" Click="ToggleCell">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Row, FallbackValue=0}"/>
+                <TextBlock Text="{Binding Cell.Row, FallbackValue=0}"/>
                 <TextBlock Text=","/>
-                <TextBlock Text="{Binding Column, FallbackValue=0}"/>
+                <TextBlock Text="{Binding Cell.Column, FallbackValue=0}"/>
+                <TextBlock Text=":"/>
+                <TextBlock Text="{Binding Cell.Number, FallbackValue=0}"/>
             </StackPanel>
-        </ToggleButton>
+
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="0" />
+                    <Setter Property="Padding" Value="0" />
+                    <Setter Property="Background" Value="AliceBlue" />
+                </Style>
+            </Button.Style>
+            
+        </Button>
     </UserControl.Content>
 </UserControl>

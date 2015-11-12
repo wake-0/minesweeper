@@ -1,4 +1,6 @@
 ﻿using PostSharp.Patterns.Model;
+using System.Linq;
+
 namespace Minesweeper.Gamelogic
 {
     [NotifyPropertyChanged]
@@ -9,8 +11,23 @@ namespace Minesweeper.Gamelogic
         public Cell[,] Neighbours { get; set; }
 
         public CellType Type { get; set; }
-        public bool State { get; set; }
-        
+        public bool IsToggled { get; set; }
+
+        [SafeForDependencyAnalysis]
+        public int Number
+        {
+            get
+            {
+                if (Depends.Guard)
+                {
+                    Depends.On(Neighbours);
+                }
+
+                return Neighbours.OfType<Cell>().Count(c => c.Type == CellType.Mine);
+            }
+        }
+
+        public bool IsMarked { get; set; }
 
         public Cell(int row, int column)
         {
@@ -22,6 +39,5 @@ namespace Minesweeper.Gamelogic
                 { null, null, null }, 
                 { null, null, null } };
         }
-
     }
 }
