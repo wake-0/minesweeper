@@ -30,14 +30,8 @@
                 Click="ToggleCell" 
                 MouseRightButtonDown="MarkCell">
 
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding Cell.Row, FallbackValue=0}"/>
-                    <TextBlock Text=","/>
-                    <TextBlock Text="{Binding Cell.Column, FallbackValue=0}"/>
-                    <TextBlock Text=":"/>
-                    <TextBlock Text="{Binding Cell.Number, FallbackValue=0}"/>
-                    <TextBlock Text=";"/>
-                    <TextBlock Text="{Binding Cell.Type, FallbackValue=0}"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Cell.Number, FallbackValue=0}"/>
             </StackPanel>
         </Button>
     </UserControl.Content>

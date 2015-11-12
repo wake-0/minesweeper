@@ -1,5 +1,6 @@
 ﻿using PostSharp.Patterns.Model;
 using System.Linq;
+using System;
 
 namespace Minesweeper.Gamelogic
 {
@@ -23,7 +24,7 @@ namespace Minesweeper.Gamelogic
                     Depends.On(Neighbours);
                 }
 
-                return Neighbours.OfType<Cell>().Count(c => c.Type == CellType.Mine);
+                return Neighbours.OfType<Cell>().Count(c => c.Type == CellType.Mine && c != this);
             }
         }
 
@@ -46,12 +47,22 @@ namespace Minesweeper.Gamelogic
             if (Type == CellType.Number)
             {
                 // Open empty neighbours
-                var emptyCells = Neighbours.OfType<Cell>().Where(c => c.Type == CellType.Number && c.Number == 0 && c != this && !c.IsToggled);
+                var emptyCells = Neighbours.OfType<Cell>()
+                    .Where(c => c.Type == CellType.Number && c.Number == 0 && c != this && !c.IsToggled);
                 foreach(var cell in emptyCells)
                 {
                     cell.OpenCell();
+
+                    // Because no mine is around
+                    cell.OpenNeighbours();
                 }
             }
+        }
+
+        private void OpenNeighbours()
+        {
+            var allNeighbours = Neighbours.OfType<Cell>().ToList();
+            allNeighbours.ForEach(neighbour => neighbour.IsToggled = true);
         }
     }
 }

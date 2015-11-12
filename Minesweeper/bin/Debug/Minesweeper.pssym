@@ -17,7 +17,7 @@
   <Evolution Source="#22=F:[Minesweeper]Minesweeper.Utils.GameSettings::&lt;Size&gt;k__BackingField" Target="#23=F:[Minesweeper]Minesweeper.Utils.GameSettings::&lt;Size&gt;k__OriginalField" />
   <Evolution Source="#23" Target="#24=P:[Minesweeper]Minesweeper.Utils.GameSettings::{Size}k__BackingField()" />
   <Class Class="#25=T:[PostSharp.Patterns.Model]PostSharp.Patterns.Model.NotifyPropertyChangedAttribute">
-    <Instance Declaration="#26=T:[Minesweeper]Minesweeper.ViewModels.MainViewModel" Id="da54e2a1f610305a">
+    <Instance Declaration="#26=T:[Minesweeper]Minesweeper.ViewModels.MainViewModel" Id="da54e2a10b942407">
       <Target>
         <JoinPoint Advising="#25" Description="#27=Introduce event PropertyChanged" Ordinal="0" />
         <JoinPoint Advising="#25" Description="#28=Introduce method remove_PropertyChanged" Ordinal="0" />
@@ -62,7 +62,7 @@
         <JoinPoint Advised="#17" Advising="#25" Description="#58" Semantic="Setter" />
       </Target>
     </Instance>
-    <Instance Declaration="#59=T:[Minesweeper]Minesweeper.Utils.GameSettings" Id="da54e2a13bf0d4bb">
+    <Instance Declaration="#59=T:[Minesweeper]Minesweeper.Utils.GameSettings" Id="da54e2a19e6e149b">
       <Target>
         <JoinPoint Advising="#25" Description="#27" Ordinal="0" />
         <JoinPoint Advising="#25" Description="#28" Ordinal="0" />
