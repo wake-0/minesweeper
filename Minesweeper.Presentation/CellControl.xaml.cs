@@ -29,11 +29,40 @@ namespace Minesweeper.Presentation
 
         private void ToggleCell(object sender, RoutedEventArgs e)
         {
+            e.Handled = ToggleCell(sender);
+        }
+
+        private void MarkCell(object sender, MouseButtonEventArgs e)
+        {
+            if (Cell.IsToggled) { return; }
+
+            Cell.IsMarked = !Cell.IsMarked;
+        }
+
+        private void OpenDependingCells(object sender, MouseButtonEventArgs e)
+        {
             var button = sender as Button;
-            if (button == null || Cell.IsToggled || Cell.IsMarked) { return; }
+            if (button == null || Cell.IsMarked) { return; }
+
+            if (!Cell.IsToggled)
+            {
+                e.Handled = ToggleCell(sender);
+            }
+            else
+            {
+                Controller.OpenDependingCells(Cell);
+                e.Handled = true;
+            }
+
+        }
+
+        private bool ToggleCell(object sender)
+        {
+            var button = sender as Button;
+            if (button == null || Cell.IsToggled || Cell.IsMarked) { return false; }
 
             var background = DefaultBrush;
-           
+
             if (Cell.Type == CellType.Mine)
             {
                 background = Brushes.Red;
@@ -42,12 +71,7 @@ namespace Minesweeper.Presentation
             Controller.OpenCell(Cell);
 
             button.Background = background;
-            e.Handled = true;
-        }
-
-        private void MarkCell(object sender, MouseButtonEventArgs e)
-        {
-            Cell.IsMarked = !Cell.IsMarked;
+            return true;
         }
     }
 }

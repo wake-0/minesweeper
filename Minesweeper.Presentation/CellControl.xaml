@@ -21,11 +21,13 @@
     </UserControl.Resources>
 
     <UserControl.Content>
+        <!--IsEnabled="{Binding Cell.IsToggled, Converter={StaticResource InverseBoolConverter}}"-->
             <Button Click="ToggleCell"
-                IsEnabled="{Binding Cell.IsToggled, Converter={StaticResource InverseBoolConverter}}"
+                
                 MouseRightButtonDown="MarkCell"
                 HorizontalContentAlignment="Stretch" 
-                VerticalContentAlignment="Stretch">
+                VerticalContentAlignment="Stretch"
+                MouseDoubleClick="OpenDependingCells">
             <Grid>
                 <Border Visibility="{Binding Cell.IsToggled, Converter={StaticResource BoolToVisibilityConverter}}" 
                         Background="{Binding Cell.Type, Converter={StaticResource CellTypeToBackgroundConverter}, Mode=OneTime}">
@@ -33,7 +35,7 @@
                 </Border>
 
                 <Border Visibility="{Binding Cell.IsMarked, Converter={StaticResource BoolToVisibilityConverter}}">
-                    <Image Source="{x:Static local:ResourceService.FlagImageSource}" Width="10" />
+                    <Image Source="{x:Static local:ResourceService.FlagImageSource}" Width="10" Visibility="{Binding Cell.IsToggled, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=!}"/>
                 </Border>
             </Grid>
         </Button>

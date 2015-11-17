@@ -14,6 +14,8 @@ namespace Minesweeper.Gamelogic
         public event EventHandler GameWon;
         public event EventHandler FirstStep;
 
+        public int NumberOfOpendedCells { get { return cells.Count(c => c.IsToggled); } }
+
         public GameController()
         {
             // Check number of mines < cells.count
@@ -51,9 +53,32 @@ namespace Minesweeper.Gamelogic
             steps++;
         }
 
+        public void OpenDependingCells(Cell cell)
+        {
+            if (steps == 0)
+            {
+                OnFirstStep();
+            }
+
+            // Open cells and all depending cells
+            cell.OpenAllowedNeighbours();
+
+            if (cell.Type == CellType.Mine)
+            {
+                ToggleAllCells();
+                OnGameOver();
+            }
+            else
+            {
+                CheckGameWon();
+            }
+
+            steps++;
+        }
+
         private void CheckGameWon()
         {
-            if (!cells.OfType<Cell>().Any(c => c.Type == CellType.Number && !c.IsToggled))
+            if (cells.Count() - NumberOfOpendedCells <= numberOfMines)
             {
                 ToggleAllCells();
                 OnGameWon();
