@@ -1,18 +1,33 @@
 ﻿using PostSharp.Patterns.Model;
 using System.Linq;
-using System;
 
 namespace Minesweeper.Gamelogic
 {
     [NotifyPropertyChanged]
     public class Cell
     {
+        private bool isToggled;
+
         public int Row { get; set; }
         public int Column { get; set; }
         public Cell[,] Neighbours { get; set; }
 
         public CellType Type { get; set; }
-        public bool IsToggled { get; set; }
+        public bool IsToggled
+        {
+            get
+            {
+                return isToggled;
+            }
+            set
+            {
+                isToggled = value;
+                if (isToggled)
+                {
+                    IsMarked = false;
+                }
+            }
+        }
 
         [SafeForDependencyAnalysis]
         public int Number
@@ -39,6 +54,8 @@ namespace Minesweeper.Gamelogic
                 { null, null, null }, 
                 { null, null, null }, 
                 { null, null, null } };
+
+            
         }
 
         public void OpenCell()

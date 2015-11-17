@@ -30,7 +30,7 @@ namespace Minesweeper.Presentation
         private void ToggleCell(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            if (button == null || Cell.IsToggled) { return; }
+            if (button == null || Cell.IsToggled || Cell.IsMarked) { return; }
 
             var background = DefaultBrush;
            

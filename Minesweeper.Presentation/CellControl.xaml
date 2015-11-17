@@ -26,11 +26,16 @@
                 MouseRightButtonDown="MarkCell"
                 HorizontalContentAlignment="Stretch" 
                 VerticalContentAlignment="Stretch">
-
-            <Border Visibility="{Binding Cell.IsToggled, Converter={StaticResource BoolToVisibilityConverter}}" 
+            <Grid>
+                <Border Visibility="{Binding Cell.IsToggled, Converter={StaticResource BoolToVisibilityConverter}}" 
                         Background="{Binding Cell.Type, Converter={StaticResource CellTypeToBackgroundConverter}, Mode=OneTime}">
-                <TextBlock Text="{Binding Cell, Mode=OneWay, Converter={StaticResource NumberToTextConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            </Border>
+                    <TextBlock Text="{Binding Cell, Mode=OneWay, Converter={StaticResource NumberToTextConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </Border>
+
+                <Border Visibility="{Binding Cell.IsMarked, Converter={StaticResource BoolToVisibilityConverter}}">
+                    <Image Source="{x:Static local:ResourceService.FlagImageSource}" Width="10" />
+                </Border>
+            </Grid>
         </Button>
     </UserControl.Content>
 </UserControl>
