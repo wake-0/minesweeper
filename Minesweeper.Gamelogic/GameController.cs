@@ -6,79 +6,86 @@ namespace Minesweeper.Gamelogic
 {
     public class GameController
     {
-        private IEnumerable<Cell> cells;
-        private int numberOfMines;
-        private int steps;
+        private bool isFirstStep;
+        private bool isGameOver;
 
         public event EventHandler GameOver;
         public event EventHandler GameWon;
         public event EventHandler FirstStep;
 
-        public int NumberOfOpendedCells { get { return cells.Count(c => c.IsToggled); } }
+        public int NumberOfOpendCells { get { return Cells.Cast<Cell>().Count(c => c.IsToggled); } }
+        public int NumberOfMines { get; set; }
 
         public GameController()
         {
             // Check number of mines < cells.count
-            numberOfMines = 2;
-            steps = 0;
+            NumberOfMines = 0;
+            isFirstStep = true;
+            isGameOver = false;
         }
 
-        public void SetCells(IEnumerable<Cell> cells, int numberOfMines)
-        {
-            this.cells = cells;
-            this.numberOfMines = numberOfMines;
-            SetMines();
-        }
+        public Cell[,] Cells { get; set; }
 
         public void OpenCell(Cell cell)
         {
-            if (steps == 0)
-            {
-                OnFirstStep();
-            }
-
-            // Open cells and all depending cells
-            cell.OpenCell();
-
-            if (cell.Type == CellType.Mine)
-            {
-                ToggleAllCells();
-                OnGameOver();
-            }
-            else
-            {
-                CheckGameWon();
-            }
-
-            steps++;
+            ToggleCore(cell);
+            CheckGameWon();
         }
 
-        public void OpenDependingCells(Cell cell)
+        public void OpenNeighbours(Cell cell)
         {
-            if (steps == 0)
+            if (!cell.IsToggled)
             {
-                OnFirstStep();
-            }
-
-            // Open cells and all depending cells
-            cell.OpenAllowedNeighbours();
-
-            if (cell.Type == CellType.Mine)
-            {
-                ToggleAllCells();
-                OnGameOver();
+                OpenCell(cell);
             }
             else
             {
-                CheckGameWon();
+                // Open cells and all depending cells
+                var neighbours = GetNeighbours(cell);
+                var markedNeighbours = neighbours.Count(n => n.IsMarked);
+                
+                if (markedNeighbours == cell.Number)
+                {
+                    neighbours.ForEach(ToggleCore);
+                    CheckGameWon();
+                }
+            }
+        }
+
+        public void MarkCell(Cell cell)
+        {
+            if (cell.IsToggled) { return; }
+
+            cell.IsMarked = !cell.IsMarked;
+        }
+
+        private List<Cell> GetNeighbours(Cell cell)
+        {
+            List<Cell> neighbours = new List<Cell>();
+            int lowerRow = cell.Row - 1;
+            int upperRow = cell.Row + 1;
+            int lowerColumn = cell.Column - 1;
+            int upperColumn = cell.Column + 1;
+
+            for (int r = lowerRow; r <= upperRow; r++)
+            {
+                if (r >= Cells.GetLength(0)) { continue; }
+                for (int c = lowerColumn; c <= upperColumn; c++)
+                {
+                    if (r < 0 || c < 0 || (r == cell.Row && c == cell.Column) || c >= Cells.GetLength(1)) { continue; }
+
+                    neighbours.Add(Cells[r, c]);
+                }
             }
 
-            steps++;
+            return neighbours;
         }
 
         private void CheckGameWon()
         {
-            if (cells.Count() - NumberOfOpendedCells <= numberOfMines)
+            if (isGameOver) { return; }
+
+            if (Cells.Length - NumberOfOpendCells <= NumberOfMines)
             {
                 ToggleAllCells();
                 OnGameWon();
@@ -109,35 +116,42 @@ namespace Minesweeper.Gamelogic
             }
         }
 
-        private void SetMines()
+        private void ToggleAllCells()
         {
-            Random random = new Random();
-
-            // Continue this operation for number of mines
-            for (int i = 0; i < numberOfMines; i++)
+            foreach (var cell in Cells.Cast<Cell>())
             {
-                int randomIndex = 0;
-                Cell randomCell = null;
-                do
-                {
-                    randomIndex = random.Next(0, cells.Count());
-                    randomCell = cells.ElementAt(randomIndex);
-                }
-                while (randomCell.Type == CellType.Mine);
-
-                // Set as mine 
-                randomCell.Type = CellType.Mine;
+                cell.IsToggled = true;
             }
         }
 
-        private void ToggleAllCells()
+        private void ToggleCore(Cell cell)
         {
-            cells.ToList().ForEach(c => c.IsToggled = true);
+            if (cell.IsToggled || cell.IsMarked) { return; }
+
+            if (isFirstStep) { OnFirstStep(); }
+
+            // Open cells and all depending cells
+            cell.IsToggled = true;
+
+            if (cell.Number == 0)
+            {
+                GetNeighbours(cell).ForEach(ToggleCore);
+            }
+
+            if (cell.Type == CellType.Mine)
+            {
+                isGameOver = true;
+                ToggleAllCells();
+                OnGameOver();
+            }
+
+            isFirstStep = false;
         }
 
         public void Reset()
         {
-            steps = 0;
+            isFirstStep = true;
+            isGameOver = false;
         }
     }
 }

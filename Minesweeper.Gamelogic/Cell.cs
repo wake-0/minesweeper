@@ -1,5 +1,4 @@
 ﻿using PostSharp.Patterns.Model;
-using System.Linq;
 
 namespace Minesweeper.Gamelogic
 {
@@ -8,11 +7,13 @@ namespace Minesweeper.Gamelogic
     {
         private bool isToggled;
 
+        public int Number { get; set; }
+        public int NumberOfMarkedNeighbours { get; set; }
+
         public int Row { get; set; }
         public int Column { get; set; }
-        public Cell[,] Neighbours { get; set; }
-
         public CellType Type { get; set; }
+
         public bool IsToggled
         {
             get
@@ -28,36 +29,6 @@ namespace Minesweeper.Gamelogic
                 }
             }
         }
-
-        [SafeForDependencyAnalysis]
-        public int Number
-        {
-            get
-            {
-                if (Depends.Guard)
-                {
-                    Depends.On(Neighbours);
-                }
-
-                return Neighbours.OfType<Cell>().Count(c => c.Type == CellType.Mine && c != this);
-            }
-        }
-
-        [SafeForDependencyAnalysis]
-        public int NumberOfMarkedNeighbours
-        {
-            get
-            {
-                if (Depends.Guard)
-                {
-                    Depends.On(IsMarked);
-
-                }
-
-                return Neighbours.OfType<Cell>().Count(c => c.IsMarked && c != this);
-            }
-        }
-
         public bool IsMarked { get; set; }
 
         public Cell(int row, int column)
@@ -65,48 +36,7 @@ namespace Minesweeper.Gamelogic
             Row = row;
             Column = column;
 
-            Neighbours = new Cell[3, 3] {
-                { null, null, null },
-                { null, null, null },
-                { null, null, null } };
-
-
-        }
-
-        public void OpenCell()
-        {
-            IsToggled = true;
-            if (Type == CellType.Number)
-            {
-                // Open empty neighbours
-                var emptyCells = Neighbours.OfType<Cell>()
-                    .Where(c => c.Type == CellType.Number && c.Number == 0 && c != this && !c.IsToggled);
-                foreach (var cell in emptyCells)
-                {
-                    cell.OpenCell();
-
-                    // Because no mine is around
-                    cell.OpenNeighbours();
-                }
-            }
-        }
-
-        private void OpenNeighbours()
-        {
-            var allNeighbours = Neighbours.OfType<Cell>().ToList();
-            allNeighbours.ForEach(neighbour => neighbour.OpenCell());
-        }
-
-        public void OpenAllowedNeighbours()
-        {
-            if (Number == NumberOfMarkedNeighbours)
-            {
-                var neighboursToOpen = Neighbours.OfType<Cell>().Where(c => !c.IsMarked && c != this && !c.IsToggled).ToList();
-                neighboursToOpen.ForEach(neighbour =>
-                {
-                    neighbour.OpenCell();
-                });
-            }
+            Type = CellType.Number;
         }
     }
 }

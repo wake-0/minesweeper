@@ -27,7 +27,7 @@
                 MouseRightButtonDown="MarkCell"
                 HorizontalContentAlignment="Stretch" 
                 VerticalContentAlignment="Stretch"
-                MouseDoubleClick="OpenDependingCells">
+                MouseDoubleClick="ToggleNeighbours">
             <Grid>
                 <Border Visibility="{Binding Cell.IsToggled, Converter={StaticResource BoolToVisibilityConverter}}" 
                         Background="{Binding Cell.Type, Converter={StaticResource CellTypeToBackgroundConverter}, Mode=OneTime}">
