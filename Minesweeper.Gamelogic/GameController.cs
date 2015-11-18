@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using PostSharp.Patterns.Model;
 
 namespace Minesweeper.Gamelogic
 {
+    [NotifyPropertyChanged]
     public class GameController
     {
         private bool isFirstStep;
@@ -13,7 +15,20 @@ namespace Minesweeper.Gamelogic
         public event EventHandler GameWon;
         public event EventHandler FirstStep;
 
-        public int NumberOfOpendCells { get { return Cells.Cast<Cell>().Count(c => c.IsToggled); } }
+        [SafeForDependencyAnalysis]
+        public int NumberOfOpendCells
+        {
+            get
+            {
+                if (Depends.Guard)
+                {
+                    Depends.On(Cells);
+                }
+
+                return Cells.Cast<Cell>().Count(c => c.IsToggled);
+            }
+        }
+        public int NumberOfMarkedCells { get; set; }
         public int NumberOfMines { get; set; }
 
         public GameController()
@@ -57,6 +72,15 @@ namespace Minesweeper.Gamelogic
             if (cell.IsToggled) { return; }
 
             cell.IsMarked = !cell.IsMarked;
+
+            if (cell.IsMarked)
+            {
+                NumberOfMarkedCells++;
+            }
+            else
+            {
+                NumberOfMarkedCells--;
+            }
         }
 
         private List<Cell> GetNeighbours(Cell cell)

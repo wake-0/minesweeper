@@ -38,6 +38,8 @@ namespace Minesweeper.Presentation
 
         private void ToggleNeighbours(object sender, MouseButtonEventArgs e)
         {
+            if (e.ChangedButton != MouseButton.Left) { return; }
+
             Controller.OpenNeighbours(Cell);
             e.Handled = true;
 
