@@ -104,8 +104,7 @@ namespace Minesweeper.Gamelogic
                 var neighboursToOpen = Neighbours.OfType<Cell>().Where(c => !c.IsMarked && c != this && !c.IsToggled).ToList();
                 neighboursToOpen.ForEach(neighbour =>
                 {
-                    neighbour.IsToggled = true;
-                    neighbour.OpenAllowedNeighbours();
+                    neighbour.OpenCell();
                 });
             }
         }

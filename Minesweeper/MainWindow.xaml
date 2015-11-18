@@ -36,6 +36,9 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Label Content="Time:" />
             <Label Content="{Binding TimerService.Time, Converter={StaticResource TimeSpanToTextConverter}}" />
+            
+            <Label Content="Mines:" Margin="10,0,0,0" />
+            <Label Content="{Binding Settings.NumberOfMines}" />
         </StackPanel>
         
         <ContentControl Grid.Row="2" Content="{Binding GameGrid}" IsEnabled="{Binding GameIsRunning}" />
