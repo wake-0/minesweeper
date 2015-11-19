@@ -6,12 +6,14 @@ namespace Minesweeper.Utils
     public class GameSettings
     {
         public int NumberOfMines { get; set; }
-        public int Size { get; set; }
+        public int Rows { get; set; }
+        public int Columns { get; set; }
 
         public GameSettings()
         {
-            NumberOfMines = 7;
-            Size = 10;
+            NumberOfMines = 10;
+            Rows = 20;
+            Columns = 10;
         }
     }
 }

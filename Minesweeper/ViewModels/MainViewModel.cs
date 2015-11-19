@@ -78,7 +78,7 @@ namespace Minesweeper.ViewModels
         private void CreateNewGame()
         {
             GameIsRunning = true;
-            Cell[,] game = GameGridFactory.CreateGame(Settings.Size, Settings.NumberOfMines);
+            Cell[,] game = GameGridFactory.CreateGame(Settings.Rows, Settings.Columns, Settings.NumberOfMines);
             GameGrid = GameGridFactory.CreateGameGrid(Controller,game);
 
             Controller.Cells = game;

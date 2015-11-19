@@ -17,14 +17,18 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Label Content="Size:" />
-        <TextBox Grid.Column="1" Text="{Binding Size, UpdateSourceTrigger=PropertyChanged}" />
-        
-        <Label Grid.Row="1" Content="Mines:" />
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding NumberOfMines, UpdateSourceTrigger=PropertyChanged}" />
+        <Label Content="Rows:" />
+        <TextBox Grid.Column="1" Text="{Binding Rows, UpdateSourceTrigger=PropertyChanged}" />
 
-        <Button Grid.Row="2" Content="Apply" Click="ApplyButtonClicked" />
+        <Label Grid.Row="1" Content="Columns:" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Columns, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Label Grid.Row="2" Content="Mines:" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding NumberOfMines, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Button Grid.Row="3" Content="Apply" Click="ApplyButtonClicked" />
     </Grid>
 </Window>

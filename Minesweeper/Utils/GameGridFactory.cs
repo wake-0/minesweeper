@@ -8,12 +8,12 @@ namespace Minesweeper.Utils
 {
     public static class GameGridFactory
     {
-        public static Cell[,] CreateGame(int size, int mines)
+        public static Cell[,] CreateGame(int rows, int columns, int mines)
         {
-            Cell[,] game = CreateCells(size, size);
+            Cell[,] game = CreateCells(rows, columns);
 
             Random random = new Random();
-            int maxIndex = size * size;
+            int maxIndex = rows * columns;
 
             // Continue this operation for number of mines
             for (int i = 0; i < mines; i++)
@@ -26,8 +26,8 @@ namespace Minesweeper.Utils
 
                     randomIndex = random.Next(0, maxIndex);
 
-                    int row = randomIndex / size;
-                    int column = randomIndex % size;
+                    int row = randomIndex / columns;
+                    int column = randomIndex % columns;
 
                     if (game[row, column].Type == CellType.Mine)
                     {
@@ -42,10 +42,10 @@ namespace Minesweeper.Utils
 
                         for (int r = lowerRow; r <= upperRow; r++)
                         {
-                            if (r >= size) { continue; }
+                            if (r >= rows) { continue; }
                             for (int c = lowerColumn; c <= upperColumn; c++)
                             {
-                                if (r < 0 || c < 0 || (r == row && c == column) || c >= size) { continue; }
+                                if (r < 0 || c < 0 || (r == row && c == column) || c >= columns) { continue; }
 
                                 if (game[r, c].Type == CellType.Mine) { continue; }
 

@@ -11,7 +11,7 @@ namespace Minesweeper.Test
         [TestMethod]
         public void CreateGame()
         {
-            Cell[,] game = GameGridFactory.CreateGame(10, 10);
+            Cell[,] game = GameGridFactory.CreateGame(10, 10, 10);
         }
     }
 }
