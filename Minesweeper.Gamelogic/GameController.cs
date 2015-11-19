@@ -176,6 +176,8 @@ namespace Minesweeper.Gamelogic
         {
             isFirstStep = true;
             isGameOver = false;
+
+            NumberOfMarkedCells = 0;
         }
     }
 }
