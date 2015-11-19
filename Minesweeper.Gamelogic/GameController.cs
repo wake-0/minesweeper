@@ -118,7 +118,7 @@ namespace Minesweeper.Gamelogic
 
         private void OnGameOver()
         {
-            if (GameOver != null)
+            if (GameOver != null && !isGameOver)
             {
                 GameOver.Invoke(this, new EventArgs());
             }
@@ -164,9 +164,10 @@ namespace Minesweeper.Gamelogic
 
             if (cell.Type == CellType.Mine)
             {
-                isGameOver = true;
-                ToggleAllCells();
                 OnGameOver();
+                isGameOver = true;
+
+                ToggleAllCells();
             }
 
             isFirstStep = false;
