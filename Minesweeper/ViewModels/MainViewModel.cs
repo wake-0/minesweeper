@@ -15,20 +15,24 @@ namespace Minesweeper.ViewModels
     {
         public ICommand StartCommand { get; set; }
         public ICommand OpenSettingsCommand { get; set; }
+        public ICommand OpenStatisticsCommand { get; set; }
         public bool GameIsRunning { get; set; }
 
         public Grid GameGrid { get; set; }
         public GameController Controller { get; set; }
 
         public GameSettings Settings { get; set; }
+        public GameStatistics Statistics { get; private set; }
         public TimerService TimerService { get; set; }
 
         public MainViewModel()
         {
             StartCommand = new DelegateCommand((obj) => StartGame());
             OpenSettingsCommand = new DelegateCommand((obj) => OpenSettings());
+            OpenStatisticsCommand = new DelegateCommand((obj) => OpenStatistics());
 
             Settings = new GameSettings();
+            Statistics = new GameStatistics();
             TimerService = new TimerService();
 
             Controller = new GameController();
@@ -46,8 +50,23 @@ namespace Minesweeper.ViewModels
         private void HandleGameWon(object sender, EventArgs e)
         {
             GameIsRunning = false;
+
+            CreateStatistic();
+
             TimerService.Stop();
             MessageBox.Show("Game won");
+        }
+
+        private void CreateStatistic()
+        {
+            var statistic = new GameStatistic()
+            {
+                Time = TimerService.Time,
+                Mines = Settings.NumberOfMines,
+                Rows = Settings.Rows,
+                Columns = Settings.Columns
+            };
+            Statistics.Statistics.Add(statistic);
         }
 
         private void HandleGameOver(object sender, EventArgs e)
@@ -68,6 +87,12 @@ namespace Minesweeper.ViewModels
             var settingsWindow = new SettingsWindow(Settings);
             settingsWindow.ApplyClicked += HandleApply;
             settingsWindow.ShowDialog();
+        }
+
+        private void OpenStatistics()
+        {
+            var statisticsWindow = new StatisticsWindow(Statistics);
+            statisticsWindow.ShowDialog();
         }
 
         private void HandleApply(object sender, EventArgs e)

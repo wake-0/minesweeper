@@ -29,6 +29,8 @@
         <Menu IsMainMenu="True">
             <MenuItem Header="Datei">
                 <MenuItem Header="New Game" Command="{Binding StartCommand}"  />
+                <MenuItem Header="Statistics" Command="{Binding OpenStatisticsCommand}"  />
+                <Separator />
                 <MenuItem Header="Settings" Command="{Binding OpenSettingsCommand}"  />
             </MenuItem>
         </Menu>
