@@ -119,13 +119,13 @@ namespace Minesweeper.ViewModels
         {
             var settingsWindow = new SettingsWindow(Settings);
             settingsWindow.ApplyClicked += HandleApply;
-            settingsWindow.ShowDialog();
+            settingsWindow.Show();
         }
 
         private void OpenStatistics()
         {
             var statisticsWindow = new StatisticsWindow(Statistics);
-            statisticsWindow.ShowDialog();
+            statisticsWindow.Show();
         }
 
         private void HandleApply(object sender, EventArgs e)

@@ -5,12 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Minesweeper"
         mc:Ignorable="d"
-        Title="SettingsWindow" Height="300" Width="300">
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize"
+        Title="Settings">
 
-    <Grid>
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="3" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="3" />
+        </Style>
+    </Window.Resources>
+    
+    <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" MinWidth="50" />
+            <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -29,6 +41,6 @@
         <Label Grid.Row="2" Content="Mines:" />
         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding NumberOfMines, UpdateSourceTrigger=PropertyChanged}" />
 
-        <Button Grid.Row="3" Content="Apply" Click="ApplyButtonClicked" />
+        <Button Grid.Row="3" Grid.Column="2" Content="Apply" Click="ApplyButtonClicked" />
     </Grid>
 </Window>

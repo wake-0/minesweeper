@@ -17,7 +17,7 @@ namespace Minesweeper.Presentation
             if (value is CellType)
             {
                 var type = (CellType)value;
-                return type == CellType.Mine ? Brushes.Red : Brushes.LightGreen;
+                return type == CellType.Mine ? Brushes.Red : Brushes.LightGray;
             }
 
             return Brushes.Transparent;

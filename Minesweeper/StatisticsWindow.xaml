@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Minesweeper"
         mc:Ignorable="d"
-        Title="StatisticsWindow"
+        Title="Statistics"
         SizeToContent="Width"
         Height="300"
         ResizeMode="CanMinimize">
@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         
-        <ListView ItemsSource="{Binding Statistics}">
+        <ListView ItemsSource="{Binding Statistics}" Background="LightGray">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Date"

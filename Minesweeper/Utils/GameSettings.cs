@@ -12,7 +12,7 @@ namespace Minesweeper.Utils
         public GameSettings()
         {
             NumberOfMines = 10;
-            Rows = 20;
+            Rows = 10;
             Columns = 10;
         }
     }

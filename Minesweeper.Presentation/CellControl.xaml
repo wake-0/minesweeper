@@ -18,6 +18,11 @@
             <Setter Property="Margin" Value="0" />
             <Setter Property="Padding" Value="0" />
         </Style>
+
+        <LinearGradientBrush x:Key="DefaultBackground" StartPoint="0,0" EndPoint="1,1" >
+            <GradientStop Color="LightGray" Offset="0" />
+            <GradientStop Color="Gray" Offset="1" />
+        </LinearGradientBrush>
     </UserControl.Resources>
 
     <UserControl.Content>
@@ -27,7 +32,8 @@
                 MouseRightButtonDown="MarkCell"
                 HorizontalContentAlignment="Stretch" 
                 VerticalContentAlignment="Stretch"
-                MouseDoubleClick="ToggleNeighbours">
+                MouseDoubleClick="ToggleNeighbours"
+                    Background="{StaticResource DefaultBackground}">
             <Grid>
                 <Border Visibility="{Binding Cell.IsToggled, Converter={StaticResource BoolToVisibilityConverter}}" 
                         Background="{Binding Cell.Type, Converter={StaticResource CellTypeToBackgroundConverter}, Mode=OneTime}">
