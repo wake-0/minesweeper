@@ -10,12 +10,17 @@
         Height="300"
         ResizeMode="CanMinimize">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
         <ListView ItemsSource="{Binding Statistics}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Date"
-                                    DisplayMemberBinding="{Binding Date}"
-                                    Width="100"/>
+                                    DisplayMemberBinding="{Binding XmlDate}"
+                                    Width="180"/>
                     <GridViewColumn Header="Rows"
                                     DisplayMemberBinding="{Binding Rows}"
                                     Width="100"/>
@@ -26,10 +31,22 @@
                                     DisplayMemberBinding="{Binding Mines}"
                                     Width="100"/>
                     <GridViewColumn Header="Time"
-                                    DisplayMemberBinding="{Binding Time}"
+                                    DisplayMemberBinding="{Binding XmlTime}"
+                                    Width="100"/>
+                    <GridViewColumn Header="Won"
+                                    DisplayMemberBinding="{Binding HasWon}"
                                     Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Label Content="Winrate:" />
+            <Label Content="{Binding WinRate}" />
+            <Label Content="Loserate:" />
+            <Label Content="{Binding LoseRate}" />
+            <Label Content="Number of games:" />
+            <Label Content="{Binding Statistics.Count}" />
+        </StackPanel>
     </Grid>
 </Window>

@@ -7,12 +7,17 @@ using Minesweeper.Gamelogic;
 using System;
 using System.Windows;
 using Minesweeper.Services;
+using System.Xml.Serialization;
+using System.IO;
+using System.Linq;
 
 namespace Minesweeper.ViewModels
 {
     [NotifyPropertyChanged]
     public class MainViewModel
     {
+        private static string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MinesweeperStatistics.xml");
+
         public ICommand StartCommand { get; set; }
         public ICommand OpenSettingsCommand { get; set; }
         public ICommand OpenStatisticsCommand { get; set; }
@@ -31,8 +36,9 @@ namespace Minesweeper.ViewModels
             OpenSettingsCommand = new DelegateCommand((obj) => OpenSettings());
             OpenStatisticsCommand = new DelegateCommand((obj) => OpenStatistics());
 
+            LoadStatistics();
+
             Settings = new GameSettings();
-            Statistics = new GameStatistics();
             TimerService = new TimerService();
 
             Controller = new GameController();
@@ -40,6 +46,32 @@ namespace Minesweeper.ViewModels
             Controller.GameOver += HandleGameOver;
             Controller.GameWon += HandleGameWon;
             CreateNewGame();
+        }
+
+        public void SaveStatistics()
+        {
+            if (!Statistics.Statistics.Any()) { return; }
+
+            XmlSerializer serializer = new XmlSerializer(typeof(GameStatistics));
+            using (TextWriter writer = new StreamWriter(fileName))
+            {
+                serializer.Serialize(writer, Statistics);
+            }
+        }
+
+        private void LoadStatistics()
+        {
+            if (!File.Exists(fileName))
+            {
+                Statistics = new GameStatistics();
+                return;
+            }
+
+            XmlSerializer deserializer = new XmlSerializer(typeof(GameStatistics));
+            using (TextReader reader = new StreamReader(fileName))
+            {
+                Statistics = deserializer.Deserialize(reader) as GameStatistics;
+            }
         }
 
         private void HandleFirstStep(object sender, EventArgs e)
@@ -50,21 +82,21 @@ namespace Minesweeper.ViewModels
         private void HandleGameWon(object sender, EventArgs e)
         {
             GameIsRunning = false;
-
-            CreateStatistic();
-
             TimerService.Stop();
+            CreateStatistic(true);
+
             MessageBox.Show("Game won");
         }
 
-        private void CreateStatistic()
+        private void CreateStatistic(bool won)
         {
             var statistic = new GameStatistic()
             {
                 Time = TimerService.Time,
                 Mines = Settings.NumberOfMines,
                 Rows = Settings.Rows,
-                Columns = Settings.Columns
+                Columns = Settings.Columns,
+                HasWon = won
             };
             Statistics.Statistics.Add(statistic);
         }
@@ -73,6 +105,7 @@ namespace Minesweeper.ViewModels
         {
             GameIsRunning = false;
             TimerService.Stop();
+            CreateStatistic(false);
             MessageBox.Show("Game over");
         }
 

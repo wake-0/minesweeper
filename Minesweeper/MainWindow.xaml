@@ -9,7 +9,8 @@
         mc:Ignorable="d"
         Title="MainWindow"
         SizeToContent="WidthAndHeight"
-        ResizeMode="CanMinimize">
+        ResizeMode="CanMinimize"
+        Closing="WindowClosing">
 
     <Window.Resources>
         <shared:TimeSpanToTextConverter x:Key="TimeSpanToTextConverter" />

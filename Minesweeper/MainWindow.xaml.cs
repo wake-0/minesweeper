@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using Minesweeper.ViewModels;
+using System.ComponentModel;
+using System.Windows;
 namespace Minesweeper
 {
     /// <summary>
@@ -9,6 +11,15 @@ namespace Minesweeper
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void WindowClosing(object sender, CancelEventArgs e)
+        {
+            var model = DataContext as MainViewModel;
+            if (model != null)
+            {
+                model.SaveStatistics();
+            }
         }
     }
 }
