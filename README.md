@@ -1,5 +1,5 @@
 # Minesweeper
 
 This project is a small implementation of a minesweeper.
-[Minesweeper](Minesweeper.Documentation/Minesweeper-default.JPG)
-[Minesweeper](Minesweeper.Documentation/Minesweeper-lost.JPG)
+<img src="Minesweeper.Documentation/Minesweeper-default.JPG" width="50%"></img>
+<img src="Minesweeper.Documentation/Minesweeper-lost.JPG" width="50%"></img>
