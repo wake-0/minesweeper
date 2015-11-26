@@ -5,15 +5,64 @@ namespace Minesweeper.Utils
     [NotifyPropertyChanged]
     public class GameSettings
     {
-        public int NumberOfMines { get; set; }
-        public int Rows { get; set; }
-        public int Columns { get; set; }
+        private int numberOfMines;
+        private int rows;
+        private int columns;
+
+        public int NumberOfMines
+        {
+            get { return numberOfMines; }
+            set
+            {
+                if (value > Rows * Columns)
+                {
+                    numberOfMines = Rows * Columns;
+                }
+                else
+                {
+                    numberOfMines = value;
+                }
+
+            }
+        }
+        public int Rows
+        {
+            get { return rows; }
+            set
+            {
+                if (value < 1)
+                {
+                    rows = 10;
+                }
+                else
+                {
+                    rows = value;
+                }
+
+            }
+        }
+        public int Columns
+        {
+            get { return columns; }
+            set
+            {
+                if (value < 1)
+                {
+                    columns = 10;
+                }
+                else
+                {
+                    columns = value;
+                }
+
+            }
+        }
 
         public GameSettings()
         {
-            NumberOfMines = 10;
             Rows = 10;
             Columns = 10;
+            NumberOfMines = 10;
         }
     }
 }
