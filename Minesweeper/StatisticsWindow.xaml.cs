@@ -3,13 +3,13 @@ using Minesweeper.Utils;
 
 namespace Minesweeper
 {
-    /// <summary>
-    /// Interaktionslogik für StatisticsWindow.xaml
-    /// </summary>
     public partial class StatisticsWindow : Window
     {
+        #region Fields
         private GameStatistics statistics;
+        #endregion
 
+        #region Constructor
         public StatisticsWindow(GameStatistics statistics)
         {
             InitializeComponent();
@@ -17,5 +17,6 @@ namespace Minesweeper
             this.statistics = statistics;
             DataContext = statistics;
         }
+        #endregion
     }
 }

@@ -5,8 +5,11 @@ namespace Minesweeper.Gamelogic
     [NotifyPropertyChanged]
     public class Cell
     {
+        #region Fields
         private bool isToggled;
+        #endregion
 
+        #region Properties
         public int Number { get; set; }
         public int NumberOfMarkedNeighbours { get; set; }
 
@@ -30,7 +33,9 @@ namespace Minesweeper.Gamelogic
             }
         }
         public bool IsMarked { get; set; }
+        #endregion
 
+        #region Constructor
         public Cell(int row, int column)
         {
             Row = row;
@@ -38,5 +43,6 @@ namespace Minesweeper.Gamelogic
 
             Type = CellType.Number;
         }
+        #endregion
     }
 }

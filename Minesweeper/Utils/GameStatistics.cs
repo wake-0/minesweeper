@@ -11,12 +11,19 @@ namespace Minesweeper.Utils
     [NotifyPropertyChanged]
     public class GameStatistics
     {
+        #region Fields
+        private readonly int percentageFactor = 100;
+        #endregion
+
+        #region Properties
         public ObservableCollection<GameStatistic> Statistics { get; private set; }
         [XmlIgnore]
         public double WinRate { get; private set; }
         [XmlIgnore]
         public double LoseRate { get; private set; }
+        #endregion
 
+        #region Constructor
         public GameStatistics()
         {
             WinRate = 0;
@@ -25,11 +32,14 @@ namespace Minesweeper.Utils
             Statistics = new ObservableCollection<GameStatistic>();
             Statistics.CollectionChanged += CollectionChanged;
         }
+        #endregion
 
+        #region Methods
         private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            WinRate = (100 * Statistics.Count(s => s.HasWon)) / Statistics.Count;
-            LoseRate = 100 - WinRate;
+            WinRate = (percentageFactor * Statistics.Count(s => s.HasWon)) / Statistics.Count;
+            LoseRate = percentageFactor - WinRate;
         }
+        #endregion
     }
 }

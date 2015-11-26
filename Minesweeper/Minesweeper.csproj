@@ -80,7 +80,6 @@
     <Compile Include="Utils\GameSettings.cs" />
     <Compile Include="Utils\GameStatistic.cs" />
     <Compile Include="Utils\GameStatistics.cs" />
-    <Compile Include="Utils\GridExtensions.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

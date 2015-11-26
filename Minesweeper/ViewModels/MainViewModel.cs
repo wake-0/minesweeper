@@ -16,8 +16,11 @@ namespace Minesweeper.ViewModels
     [NotifyPropertyChanged]
     public class MainViewModel
     {
+        #region Fields
         private static string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MinesweeperStatistics.xml");
+        #endregion
 
+        #region Properties
         public ICommand StartCommand { get; set; }
         public ICommand OpenSettingsCommand { get; set; }
         public ICommand OpenStatisticsCommand { get; set; }
@@ -29,7 +32,9 @@ namespace Minesweeper.ViewModels
         public GameSettings Settings { get; set; }
         public GameStatistics Statistics { get; private set; }
         public TimerService TimerService { get; set; }
+        #endregion
 
+        #region Constructor
         public MainViewModel()
         {
             StartCommand = new DelegateCommand((obj) => StartGame());
@@ -47,7 +52,9 @@ namespace Minesweeper.ViewModels
             Controller.GameWon += HandleGameWon;
             CreateNewGame();
         }
+        #endregion
 
+        #region Methods
         public void SaveStatistics()
         {
             if (!Statistics.Statistics.Any()) { return; }
@@ -98,6 +105,7 @@ namespace Minesweeper.ViewModels
                 Columns = Settings.Columns,
                 HasWon = won
             };
+
             Statistics.Statistics.Add(statistic);
         }
 
@@ -106,6 +114,7 @@ namespace Minesweeper.ViewModels
             GameIsRunning = false;
             TimerService.Stop();
             CreateStatistic(false);
+
             MessageBox.Show("Game over");
         }
 
@@ -144,5 +153,6 @@ namespace Minesweeper.ViewModels
 
             Controller.Reset();
         }
+        #endregion
     }
 }

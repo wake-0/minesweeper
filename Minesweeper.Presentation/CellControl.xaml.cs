@@ -6,15 +6,15 @@ using System.Windows.Input;
 
 namespace Minesweeper.Presentation
 {
-    /// <summary>
-    /// Interaktionslogik für CellControl.xaml
-    /// </summary>
     [NotifyPropertyChanged]
     public partial class CellControl : UserControl
     {
+        #region Properties
         public Cell Cell { get; private set; }
         public GameController Controller { get; private set; }
+        #endregion
 
+        #region Constructor
         public CellControl(GameController controller, Cell cell)
         {
             InitializeComponent();
@@ -23,7 +23,9 @@ namespace Minesweeper.Presentation
             Controller = controller;
             DataContext = this;
         }
+        #endregion
 
+        #region Methods
         private void ToggleCell(object sender, RoutedEventArgs e)
         {
             Controller.OpenCell(Cell);
@@ -42,7 +44,7 @@ namespace Minesweeper.Presentation
 
             Controller.OpenNeighbours(Cell);
             e.Handled = true;
-
         }
+        #endregion
     }
 }

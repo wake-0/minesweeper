@@ -4,19 +4,21 @@ using Minesweeper.Utils;
 
 namespace Minesweeper
 {
-    /// <summary>
-    /// Interaktionslogik für SettingsWindow.xaml
-    /// </summary>
     public partial class SettingsWindow : Window
     {
+        #region Events
         public event EventHandler ApplyClicked;
+        #endregion
 
+        #region Constructor
         public SettingsWindow(GameSettings settings)
         {
             InitializeComponent();
             DataContext = settings;
         }
+        #endregion
 
+        #region Methods
         private void OnApplyClicked()
         {
             if (ApplyClicked != null)
@@ -30,5 +32,6 @@ namespace Minesweeper
             Close();
             OnApplyClicked();
         }
+        #endregion
     }
 }

@@ -3,16 +3,16 @@ using System.ComponentModel;
 using System.Windows;
 namespace Minesweeper
 {
-    /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        #region Constructor
         public MainWindow()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Methods
         private void WindowClosing(object sender, CancelEventArgs e)
         {
             var model = DataContext as MainViewModel;
@@ -21,5 +21,6 @@ namespace Minesweeper
                 model.SaveStatistics();
             }
         }
+        #endregion
     }
 }

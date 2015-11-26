@@ -5,36 +5,42 @@ namespace Minesweeper.Shared
 {
     public class DelegateCommand : ICommand
     {
-        private readonly Predicate<object> _canExecute;
-        private readonly Action<object> _execute;
+        #region Fields
+        private readonly Predicate<object> canExecute;
+        private readonly Action<object> execute;
+        #endregion
 
+        #region Events
         public event EventHandler CanExecuteChanged;
+        #endregion
 
+        #region Constructor
         public DelegateCommand(Action<object> execute)
-                       : this(execute, null)
+        : this(execute, null)
         {
         }
 
-        public DelegateCommand(Action<object> execute,
-                       Predicate<object> canExecute)
+        public DelegateCommand(Action<object> execute, Predicate<object> canExecute)
         {
-            _execute = execute;
-            _canExecute = canExecute;
+            this.execute = execute;
+            this.canExecute = canExecute;
         }
+        #endregion
 
+        #region Methods
         public bool CanExecute(object parameter)
         {
-            if (_canExecute == null)
+            if (canExecute == null)
             {
                 return true;
             }
 
-            return _canExecute(parameter);
+            return canExecute(parameter);
         }
 
         public void Execute(object parameter)
         {
-            _execute(parameter);
+            execute(parameter);
         }
 
         public void RaiseCanExecuteChanged()
@@ -44,5 +50,6 @@ namespace Minesweeper.Shared
                 CanExecuteChanged(this, EventArgs.Empty);
             }
         }
+        #endregion
     }
 }

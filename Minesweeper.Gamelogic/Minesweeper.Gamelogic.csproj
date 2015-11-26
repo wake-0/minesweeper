@@ -57,6 +57,7 @@
     <Compile Include="Cell.cs" />
     <Compile Include="CellType.cs" />
     <Compile Include="GameController.cs" />
+    <Compile Include="GameExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using PostSharp.Patterns.Model;
 
@@ -8,12 +7,22 @@ namespace Minesweeper.Gamelogic
     [NotifyPropertyChanged]
     public class GameController
     {
+        #region Fields
         private bool isFirstStep;
         private bool isGameOver;
+        #endregion
 
+        #region Events
         public event EventHandler GameOver;
         public event EventHandler GameWon;
         public event EventHandler FirstStep;
+        #endregion
+
+        #region Properties
+        public Cell[,] Cells { get; set; }
+
+        public int NumberOfMarkedCells { get; set; }
+        public int NumberOfMines { get; set; }
 
         [SafeForDependencyAnalysis]
         public int NumberOfOpendCells
@@ -28,9 +37,9 @@ namespace Minesweeper.Gamelogic
                 return Cells.Cast<Cell>().Count(c => c.IsToggled);
             }
         }
-        public int NumberOfMarkedCells { get; set; }
-        public int NumberOfMines { get; set; }
+        #endregion
 
+        #region Constructor
         public GameController()
         {
             // Check number of mines < cells.count
@@ -38,9 +47,9 @@ namespace Minesweeper.Gamelogic
             isFirstStep = true;
             isGameOver = false;
         }
+        #endregion
 
-        public Cell[,] Cells { get; set; }
-
+        #region Methods
         public void OpenCell(Cell cell)
         {
             ToggleCore(cell);
@@ -56,7 +65,7 @@ namespace Minesweeper.Gamelogic
             else
             {
                 // Open cells and all depending cells
-                var neighbours = GetNeighbours(cell);
+                var neighbours = Cells.GetNeighbours(cell);
                 var markedNeighbours = neighbours.Count(n => n.IsMarked);
                 
                 if (markedNeighbours == cell.Number)
@@ -81,28 +90,6 @@ namespace Minesweeper.Gamelogic
             {
                 NumberOfMarkedCells--;
             }
-        }
-
-        private List<Cell> GetNeighbours(Cell cell)
-        {
-            List<Cell> neighbours = new List<Cell>();
-            int lowerRow = cell.Row - 1;
-            int upperRow = cell.Row + 1;
-            int lowerColumn = cell.Column - 1;
-            int upperColumn = cell.Column + 1;
-
-            for (int r = lowerRow; r <= upperRow; r++)
-            {
-                if (r >= Cells.GetLength(0)) { continue; }
-                for (int c = lowerColumn; c <= upperColumn; c++)
-                {
-                    if (r < 0 || c < 0 || (r == cell.Row && c == cell.Column) || c >= Cells.GetLength(1)) { continue; }
-
-                    neighbours.Add(Cells[r, c]);
-                }
-            }
-
-            return neighbours;
         }
 
         private void CheckGameWon()
@@ -159,7 +146,7 @@ namespace Minesweeper.Gamelogic
 
             if (cell.Number == 0)
             {
-                GetNeighbours(cell).ForEach(ToggleCore);
+                Cells.GetNeighbours(cell).ForEach(ToggleCore);
             }
 
             if (cell.Type == CellType.Mine)
@@ -180,5 +167,6 @@ namespace Minesweeper.Gamelogic
 
             NumberOfMarkedCells = 0;
         }
+        #endregion
     }
 }

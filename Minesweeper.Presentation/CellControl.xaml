@@ -26,7 +26,6 @@
     </UserControl.Resources>
 
     <UserControl.Content>
-        <!--IsEnabled="{Binding Cell.IsToggled, Converter={StaticResource InverseBoolConverter}}"-->
             <Button Click="ToggleCell"
                 
                 MouseRightButtonDown="MarkCell"

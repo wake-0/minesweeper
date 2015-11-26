@@ -6,6 +6,7 @@ namespace Minesweeper.Shared.Converters
 {
     public class InverseBoolConverter : IValueConverter
     {
+        #region Methods
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is bool)
@@ -20,5 +21,6 @@ namespace Minesweeper.Shared.Converters
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

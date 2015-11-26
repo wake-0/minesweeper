@@ -1,6 +1,7 @@
 ﻿using Minesweeper.Gamelogic;
 using Minesweeper.Presentation;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -8,6 +9,7 @@ namespace Minesweeper.Utils
 {
     public static class GameGridFactory
     {
+        #region Methods
         public static Cell[,] CreateGame(int rows, int columns, int mines)
         {
             Cell[,] game = CreateCells(rows, columns);
@@ -28,54 +30,24 @@ namespace Minesweeper.Utils
 
                     int row = randomIndex / columns;
                     int column = randomIndex % columns;
+                    var cell = game[row, column];
 
-                    if (game[row, column].Type == CellType.Mine)
+                    if (cell.Type == CellType.Mine)
                     {
                         wasMine = true;
                     }
                     else
                     {
-                        int lowerRow = row - 1;
-                        int upperRow = row + 1;
-                        int lowerColumn = column - 1;
-                        int upperColumn = column + 1;
-
-                        for (int r = lowerRow; r <= upperRow; r++)
-                        {
-                            if (r >= rows) { continue; }
-                            for (int c = lowerColumn; c <= upperColumn; c++)
-                            {
-                                if (r < 0 || c < 0 || (r == row && c == column) || c >= columns) { continue; }
-
-                                if (game[r, c].Type == CellType.Mine) { continue; }
-
-                                game[r, c].Number++;
-                            }
-                        }
-
+                        var neighbours = game.GetNeighbours(cell).Where(c => c.Type != CellType.Mine);
+                        neighbours.ToList().ForEach(n => n.Number++);
                     }
 
-                    game[row, column].Type = CellType.Mine;
+                    cell.Type = CellType.Mine;
                 }
                 while (wasMine);
             }
 
             return game;
-        }
-
-        private static Cell[,] CreateCells(int rows, int columns)
-        {
-            Cell[,] cells = new Cell[rows, columns];
-
-            for (int row = 0; row < rows; row++)
-            {
-                for (int column = 0; column < columns; column++)
-                {
-                    cells[row, column] = new Cell(row, column);
-                }
-            }
-
-            return cells;
         }
 
         public static Grid CreateGameGrid(GameController controller, Cell[,] game)
@@ -107,5 +79,21 @@ namespace Minesweeper.Utils
 
             return grid;
         }
+
+        private static Cell[,] CreateCells(int rows, int columns)
+        {
+            Cell[,] cells = new Cell[rows, columns];
+
+            for (int row = 0; row < rows; row++)
+            {
+                for (int column = 0; column < columns; column++)
+                {
+                    cells[row, column] = new Cell(row, column);
+                }
+            }
+
+            return cells;
+        }
+        #endregion
     }
 }

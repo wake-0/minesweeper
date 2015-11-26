@@ -8,11 +8,16 @@ namespace Minesweeper.Services
     [NotifyPropertyChanged]
     public class TimerService
     {
+        #region Fields
         private readonly Stopwatch watch;
         private readonly Timer timer;
+        #endregion
 
+        #region Properties
         public TimeSpan Time { get; private set; }
+        #endregion
 
+        #region Constructor
         public TimerService()
         {
             timer = new Timer(500);
@@ -20,7 +25,9 @@ namespace Minesweeper.Services
 
             timer.Elapsed += TimerElapsed;
         }
+        #endregion
 
+        #region Methods
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
             Time = watch.Elapsed;
@@ -43,5 +50,6 @@ namespace Minesweeper.Services
             watch.Stop();
             timer.Stop();
         }
+        #endregion
     }
 }
