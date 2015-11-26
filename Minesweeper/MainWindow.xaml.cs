@@ -18,7 +18,7 @@ namespace Minesweeper
             var model = DataContext as MainViewModel;
             if (model != null)
             {
-                model.SaveStatistics();
+                model.Shutdown();
             }
         }
         #endregion

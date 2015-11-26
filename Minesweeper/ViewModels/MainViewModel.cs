@@ -18,12 +18,15 @@ namespace Minesweeper.ViewModels
     {
         #region Fields
         private static string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MinesweeperStatistics.xml");
+
+        private SettingsWindow settingsWindow;
+        private StatisticsWindow statisticsWindow;
         #endregion
 
         #region Properties
         public ICommand StartCommand { get; set; }
-        public ICommand OpenSettingsCommand { get; set; }
-        public ICommand OpenStatisticsCommand { get; set; }
+        public DelegateCommand OpenSettingsCommand { get; set; }
+        public DelegateCommand OpenStatisticsCommand { get; set; }
         public bool GameIsRunning { get; set; }
 
         public Grid GameGrid { get; set; }
@@ -38,8 +41,8 @@ namespace Minesweeper.ViewModels
         public MainViewModel()
         {
             StartCommand = new DelegateCommand((obj) => StartGame());
-            OpenSettingsCommand = new DelegateCommand((obj) => OpenSettings());
-            OpenStatisticsCommand = new DelegateCommand((obj) => OpenStatistics());
+            OpenSettingsCommand = new DelegateCommand((obj) => OpenSettings(), (obj) => settingsWindow == null);
+            OpenStatisticsCommand = new DelegateCommand((obj) => OpenStatistics(), (obj) => statisticsWindow == null);
 
             LoadStatistics();
 
@@ -55,7 +58,7 @@ namespace Minesweeper.ViewModels
         #endregion
 
         #region Methods
-        public void SaveStatistics()
+        private void SaveStatistics()
         {
             if (!Statistics.Statistics.Any()) { return; }
 
@@ -126,15 +129,42 @@ namespace Minesweeper.ViewModels
 
         private void OpenSettings()
         {
-            var settingsWindow = new SettingsWindow(Settings);
+            settingsWindow = new SettingsWindow(Settings);
+            settingsWindow.Closed += CloseSettingsWindow;
             settingsWindow.ApplyClicked += HandleApply;
+
+            OpenSettingsCommand.RaiseCanExecuteChanged();
+
             settingsWindow.Show();
+        }
+
+        private void CloseSettingsWindow(object sender, EventArgs e)
+        {
+            var window = (SettingsWindow)sender;
+            window.Closed -= CloseSettingsWindow;
+            window.ApplyClicked -= HandleApply;
+            settingsWindow = null;
+
+            OpenSettingsCommand.RaiseCanExecuteChanged();
         }
 
         private void OpenStatistics()
         {
-            var statisticsWindow = new StatisticsWindow(Statistics);
+            statisticsWindow = new StatisticsWindow(Statistics);
+            statisticsWindow.Closed += CloseStatisticsWindow;
+
+            OpenStatisticsCommand.RaiseCanExecuteChanged();
+
             statisticsWindow.Show();
+        }
+
+        private void CloseStatisticsWindow(object sender, EventArgs e)
+        {
+            var window = (StatisticsWindow)sender;
+            window.Closed -= CloseStatisticsWindow;
+            statisticsWindow = null;
+
+            OpenStatisticsCommand.RaiseCanExecuteChanged();
         }
 
         private void HandleApply(object sender, EventArgs e)
@@ -152,6 +182,14 @@ namespace Minesweeper.ViewModels
             Controller.NumberOfMines = Settings.NumberOfMines;
 
             Controller.Reset();
+        }
+
+        internal void Shutdown()
+        {
+            if (settingsWindow != null) { settingsWindow.Close(); }
+            if (statisticsWindow != null) { statisticsWindow.Close(); }
+
+            SaveStatistics();
         }
         #endregion
     }
