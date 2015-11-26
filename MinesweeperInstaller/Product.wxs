@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:VSExtension="http://schemas.microsoft.com/wix/VSExtension">
+  <Product Id="*" Name="MinesweeperInstaller" Language="1033" Version="1.0.0.0" Manufacturer="Blackjack92" UpgradeCode="95b1c2c4-c493-4634-a9a1-fed39ead99d8">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Minesweeper is already installed." />
+    <MediaTemplate />
+
+    <Feature Id="ProductFeature" Title="MinesweeperInstaller" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="Minesweeper" />
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component Id="ProductComponent" Guid="{5C9F462A-4606-4855-9C03-CFACDE552557}">
+        <File Source="$(var.Minesweeper.TargetPath)" Id="Main" />
+        <File Source="$(var.Minesweeper.Gamelogic.TargetPath)" Id="Gamelogic" />
+        <File Source="$(var.Minesweeper.Presentation.TargetPath)" Id="Presentation" />
+        <File Source="$(var.Minesweeper.Shared.TargetPath)" Id="Shared"/>
+
+      <File Source="$(var.Minesweeper.TargetPath)\..\PostSharp.dll" Id="PostSharp" />
+      <File Source="$(var.Minesweeper.TargetPath)\..\PostSharp.Patterns.Common.dll" Id="PostSharp.Patterns" />
+      <File Source="$(var.Minesweeper.TargetPath)\..\PostSharp.Patterns.Model.dll" Id="PostSharp.Model" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
