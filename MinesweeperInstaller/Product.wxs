@@ -23,14 +23,14 @@
   <Fragment>
     <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
       <Component Id="ProductComponent" Guid="{5C9F462A-4606-4855-9C03-CFACDE552557}">
-        <File Source="$(var.Minesweeper.TargetPath)" Id="Main" />
-        <File Source="$(var.Minesweeper.Gamelogic.TargetPath)" Id="Gamelogic" />
-        <File Source="$(var.Minesweeper.Presentation.TargetPath)" Id="Presentation" />
-        <File Source="$(var.Minesweeper.Shared.TargetPath)" Id="Shared"/>
+        <File Id="Main" Source="$(var.Minesweeper.TargetPath)" />
+        <File Id="Gamelogic" Source="$(var.Minesweeper.Gamelogic.TargetPath)" />
+        <File Id="Presentation" Source="$(var.Minesweeper.Presentation.TargetPath)" />
+        <File Id="Shared" Source="$(var.Minesweeper.Shared.TargetPath)" />
 
-        <File Source="$(var.Minesweeper.TargetPath)\..\PostSharp.dll" Id="PostSharp" />
-        <File Source="$(var.Minesweeper.TargetPath)\..\PostSharp.Patterns.Common.dll" Id="PostSharp.Patterns" />
-        <File Source="$(var.Minesweeper.TargetPath)\..\PostSharp.Patterns.Model.dll" Id="PostSharp.Model" />
+        <File Id="PostSharp" Source="$(var.Minesweeper.TargetPath)\..\PostSharp.dll" />
+        <File Id="PostSharp.Patterns" Source="$(var.Minesweeper.TargetPath)\..\PostSharp.Patterns.Common.dll" />
+        <File Id="PostSharp.Model" Source="$(var.Minesweeper.TargetPath)\..\PostSharp.Patterns.Model.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
