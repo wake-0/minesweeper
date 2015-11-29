@@ -29,8 +29,8 @@ namespace Minesweeper
 
         private void ApplyButtonClicked(object sender, RoutedEventArgs e)
         {
-            Close();
             OnApplyClicked();
+            Close();
         }
         #endregion
     }
